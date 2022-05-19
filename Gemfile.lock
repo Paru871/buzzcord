@@ -60,6 +60,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    ast (2.4.2)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     bindex (0.8.1)
@@ -70,6 +71,9 @@ GEM
       popper_js (>= 2.9.3, < 3)
       sassc-rails (>= 2.0.0)
     builder (3.2.4)
+    bullet (7.0.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.3)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
@@ -109,6 +113,9 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6-x86_64-darwin)
       racc (~> 1.4)
+    parallel (1.22.1)
+    parser (3.1.2.0)
+      ast (~> 2.4.1)
     pg (1.3.5)
     popper_js (2.9.3)
     puma (5.6.4)
@@ -147,10 +154,37 @@ GEM
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
+    rainbow (3.1.1)
     rake (13.0.6)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    regexp_parser (2.4.0)
+    rexml (3.2.5)
+    rubocop (1.29.1)
+      parallel (~> 1.10)
+      parser (>= 3.1.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.17.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.17.0)
+      parser (>= 3.1.1.0)
+    rubocop-fjord (0.2.0)
+      rubocop (>= 1.0)
+      rubocop-performance
+    rubocop-performance (1.13.3)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.14.2)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.7.0, < 2.0)
+    rubocop-rspec (2.10.0)
+      rubocop (~> 1.19)
+    ruby-progressbar (1.11.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -169,6 +203,9 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (>= 3.0, < 5.0)
+    slim_lint (0.22.1)
+      rubocop (>= 0.78.0)
+      slim (>= 3.0, < 5.0)
     spring (4.0.0)
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
@@ -186,6 +223,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    unicode-display_width (2.1.0)
+    uniform_notifier (1.14.2)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -207,6 +246,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   bootstrap
+  bullet
   byebug
   html2slim
   jbuilder (~> 2.7)
@@ -216,8 +256,14 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6)
+  rubocop
+  rubocop-fjord
+  rubocop-performance
+  rubocop-rails
+  rubocop-rspec
   sass-rails (>= 6)
   slim-rails
+  slim_lint
   spring
   turbolinks (~> 5)
   tzinfo-data
