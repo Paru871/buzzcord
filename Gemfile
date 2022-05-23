@@ -66,5 +66,6 @@ gem 'discordrb'
 gem 'dotenv-rails'
 gem 'html2slim'
 gem 'net-smtp'
+gem 'parser', '~> 3.1', '>= 3.1.2.0'
 gem 'slim-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

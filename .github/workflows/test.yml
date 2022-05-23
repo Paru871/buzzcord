@@ -9,13 +9,12 @@ name: Test
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     env:
@@ -35,32 +34,49 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-    - name: Set Timezone
-      uses: szenius/set-timezone@v1.0
-      with:
-        timezoneLinux: "Asia/Tokyo"
+      - name: Set Timezone
+        uses: szenius/set-timezone@v1.0
+        with:
+          timezoneLinux: "Asia/Tokyo"
 
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.1.0
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.0
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
-    - name: Cache node modules
-      uses: actions/cache@v2.1.4
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+      - name: Cache node modules
+        uses: actions/cache@v2.1.4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-    - name: yarn install
-      run:  yarn install --check-files
+      - name: yarn install
+        run: yarn install --check-files
 
-    - name: Setup test DB
-      run: bundle exec rails db:setup
+      - name: Setup test DB
+        run: bundle exec rails db:setup
 
-    - name: Run tests
-      run: bundle exec rspec
-      
+      - name: Run tests
+        run: bundle exec rspec
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Slim Lint
+        run: bundle exec slim-lint app/views
+
+      # Add or replace any other lints here
+      - name: Lint Ruby files
+        run: bundle exec rubocop --parallel
