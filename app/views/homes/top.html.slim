@@ -1,0 +1,8 @@
+h1 Homes#top
+p Find me in app/views/homes/top.html.slim
+
+/ - if logged_in?
+/   = link_to 'ログアウト', logout_path
+/ - else
+  = link_to 'Discordでログイン', 'auth/discord', method: :post
+= link_to 'ログイン', '/auth/discord', method: :post
