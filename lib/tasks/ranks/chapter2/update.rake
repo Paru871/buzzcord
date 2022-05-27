@@ -6,7 +6,7 @@ namespace :ranks do
     task update: :environment do
       Rank.delete_all
       # 今日の場合、昨日はtodayをyesterdayに変える
-      today_reactions = Reaction.where(reacted_at: Time.zone.today.all_day)
+      today_reactions = Reaction.where(reacted_at: Time.zone.yesterday.all_day)
       # sorted_today_massages = today_reactions.limit(30).order('sum_point desc').group(:message_id).sum(:point)
       sorted_today_massages = today_reactions.order('sum_point desc').group(:message_id).sum(:point)
 
