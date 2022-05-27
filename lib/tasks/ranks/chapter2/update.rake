@@ -47,11 +47,12 @@ namespace :ranks do
         end
 
         message_information_parsed['reactions'].each do |hash_emoji|
-          next unless today_reactions.where(message_id: message[0], emoji_name:hash_emoji['emoji']['name']).sum(:point) > 0
+          next unless today_reactions.where(message_id: message[0], emoji_name: hash_emoji['emoji']['name']).sum(:point).positive?
+
           rank_record.emojis.create do |emoji|
             emoji.emoji_id = hash_emoji['emoji']['id']
             emoji.emoji_name = hash_emoji['emoji']['name']
-            emoji.count = today_reactions.where(message_id: message[0], emoji_name:hash_emoji['emoji']['name']).sum(:point)
+            emoji.count = today_reactions.where(message_id: message[0], emoji_name: hash_emoji['emoji']['name']).sum(:point)
           end
         end
 
