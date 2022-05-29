@@ -10,4 +10,7 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-info
+      .navbar-brand.ms-0 Buzzcord
+    .container
+      = yield

@@ -1,2 +1,19 @@
-h1 Ranks#index
-p Find me in app/views/ranks/index.html.slim
+h1 ランキング一覧
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th = Rank.human_attribute_name(:order)
+      th = Rank.human_attribute_name(:channel_name)
+      th = Rank.human_attribute_name(:author_name)
+      th = Rank.human_attribute_name(:content)
+      th
+  tbody
+    - @ranks.each do |rank|
+      tr
+        td = rank.order
+        td = rank.channel_name
+        td = rank.author_name
+        td = rank.content
+        td

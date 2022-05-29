@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_23_081626) do
+ActiveRecord::Schema.define(version: 2022_05_25_122553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2022_05_23_081626) do
     t.text "content", null: false
     t.bigint "author_id", null: false
     t.string "author_name", null: false
-    t.string "author_avatar", null: false
+    t.string "author_avatar"
     t.string "author_discriminator", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(version: 2022_05_23_081626) do
     t.string "emoji_name", null: false
     t.bigint "emoji_id"
     t.datetime "reacted_at", null: false
-    t.string "type", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "point"
     t.index ["reacted_at"], name: "index_reactions_on_reacted_at"
   end
 
