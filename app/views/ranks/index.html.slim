@@ -1,7 +1,4 @@
-
 h1 ランキング一覧
-
-/ = link_to('新規登録', new_task_path, class: 'btn btn-primary')
 
 .mb-3
 table.table.table-hover
@@ -20,5 +17,3 @@ table.table.table-hover
         td= rank.author_name
         td= rank.content
         td
-          / = link_to '編集', edit_task_path(task), class: 'btn btn-primary me-3'
-          / = link_to '削除', task, method: :delete, data: { confirm: "タスク「#{task.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger'

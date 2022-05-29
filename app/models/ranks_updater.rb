@@ -12,18 +12,13 @@ class RanksUpdater
   private
 
   def create_ranks
-    # today_reactions = Reaction.where(reacted_at: Time.zone.yesterday.all_day)
-    today_reactions = Reaction.all
-    # sorted_today_massages = today_reactions.limit(30).order('sum_point desc').group(:message_id).sum(:point)
-    sorted_today_massages = today_reactions.order('sum_point desc').group(:message_id).sum(:point)
+    # yesterday_reactions = Reaction.where(reacted_at: Time.zone.yesterday.all_day)
+    yesterday_reactions = Reaction.all
+    # sorted_yesterday_massages = yesterday_reactions.limit(30).order('sum_point desc').group(:message_id).sum(:point)
+    sorted_yesterday_massages = yesterday_reactions.order('sum_point desc').group(:message_id).sum(:point)
 
-    # index = 1
-    sorted_today_massages.each.with_index(1) do |message, index|
-      # unless message[1] == points
-      #   index += 1
-      #   points = message[1]
-      # end
-      channel = today_reactions.find_by(message_id: message[0]).channel_id
+    sorted_yesterday_massages.each.with_index(1) do |message, index|
+      channel = yesterday_reactions.find_by(message_id: message[0]).channel_id
       response = Discordrb::API::Channel.resolve(ENV['DISCORD_BOT_TOKEN_BOT'], channel)
       parsed = JSON.parse(response)
 
@@ -55,34 +50,20 @@ class RanksUpdater
         rank.author_discriminator = message_information_parsed['author']['discriminator']
       end
 
-      create_emojis(message_information_parsed['reactions'], today_reactions, message, rank_record)
-      # message_information_parsed['reactions'].each do |hash_emoji|
-      #   next unless today_reactions.where(message_id: message[0], emoji_name:hash_emoji['emoji']['name']).sum(:point) > 0
-      #   rank_record.emojis.create do |emoji|
-      #     emoji.emoji_id = hash_emoji['emoji']['id']
-      #     emoji.emoji_name = hash_emoji['emoji']['name']
-      #     emoji.count = today_reactions.where(message_id: message[0], emoji_name:hash_emoji['emoji']['name']).sum(:point)
-      #   end
-      # end
+      create_emojis(message_information_parsed['reactions'], yesterday_reactions, message, rank_record)
 
       create_attachments(message_information_parsed, rank_record)
-      # message_information_parsed['attachments'].each do |hash_attachment|
-      #   rank_record.attachments.create do |attachment|
-      #     attachment.attachment_id = hash_attachment['id']
-      #     attachment.attachment_filename = hash_attachment['filename']
-      #   end
-      # end
     end
   end
 
-  def create_emojis(emoji_hash, today_reactions, message, rank_record)
+  def create_emojis(emoji_hash, yesterday_reactions, message, rank_record)
     emoji_hash.each do |hash_emoji|
-      next unless today_reactions.where(message_id: message[0], emoji_name: hash_emoji['emoji']['name']).sum(:point).positive?
+      next unless yesterday_reactions.where(message_id: message[0], emoji_name: hash_emoji['emoji']['name']).sum(:point).positive?
 
       rank_record.emojis.create do |emoji|
         emoji.emoji_id = hash_emoji['emoji']['id']
         emoji.emoji_name = hash_emoji['emoji']['name']
-        emoji.count = today_reactions.where(message_id: message[0], emoji_name: hash_emoji['emoji']['name']).sum(:point)
+        emoji.count = yesterday_reactions.where(message_id: message[0], emoji_name: hash_emoji['emoji']['name']).sum(:point)
       end
     end
   end
