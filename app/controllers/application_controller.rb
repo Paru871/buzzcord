@@ -2,7 +2,7 @@
 
 class ApplicationController < ActionController::Base
   helper_method :current_user
-  before_action :login_required, except: :top
+  before_action :login_required
 
   private
 
@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
 
   def login_required
     session[:return_to] = request.url
-    redirect_to root_path unless current_user
+    redirect_to homes_url unless current_user
   end
 end

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'ranks/index'
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
-
-  root 'homes#top'
+  root to: 'ranks#index'
+  get 'homes', to: 'homes#top', as: 'homes'
+  get '/auth/:provider/callback' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
 end
