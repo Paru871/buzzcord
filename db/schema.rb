@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_25_122553) do
+ActiveRecord::Schema.define(version: 2022_05_30_012240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,17 @@ ActiveRecord::Schema.define(version: 2022_05_25_122553) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "point"
     t.index ["reacted_at"], name: "index_reactions_on_reacted_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "provider", null: false
+    t.string "uid", null: false
+    t.string "name", null: false
+    t.string "avatar"
+    t.string "discriminator", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
   add_foreign_key "attachments", "ranks", on_update: :cascade, on_delete: :cascade
