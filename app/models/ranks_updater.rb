@@ -20,7 +20,7 @@ class RanksUpdater
     sorted_yesterday_massages.each.with_index(1) do |message, index|
       channel = yesterday_reactions.find_by(message_id: message[0]).channel_id
       channel_hash = make_channel_hash(channel)
-      message_information = Discordrb::API::Channel.message(ENV['DISCORD_BOT_TOKEN_BOT'], channel, message[0])
+      message_information = Discordrb::API::Channel.message("Bot #{ENV['DISCORD_BOT_TOKEN']}", channel, message[0])
       message_information_parsed = JSON.parse(message_information)
 
       rank_record = rank_data_creation(index, channel_hash, message, message_information_parsed)
@@ -32,14 +32,14 @@ class RanksUpdater
   end
 
   def make_channel_hash(channel)
-    response = Discordrb::API::Channel.resolve(ENV['DISCORD_BOT_TOKEN_BOT'], channel)
+    response = Discordrb::API::Channel.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", channel)
     parsed = JSON.parse(response)
     h = Hash.new([])
     if parsed.key?('thread_metadata')
       h[:thread_id] = channel
       h[:thread_name] = parsed['name']
       h[:channel_id] = parsed['parent_id']
-      response = Discordrb::API::Channel.resolve(ENV['DISCORD_BOT_TOKEN_BOT'], parsed['parent_id'])
+      response = Discordrb::API::Channel.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", parsed['parent_id'])
       h[:channel_name] = (JSON.parse(response))['name']
     else
       h[:channel_id] = channel
