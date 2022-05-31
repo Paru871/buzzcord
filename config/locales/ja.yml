@@ -10,6 +10,7 @@ ja:
         thread_name: スレッド
         content: 投稿内容
         author_name: 投稿者
+        posted_at: 投稿日時
   date:
     formats:
       default: "%Y年%m月%d日"
