@@ -63,6 +63,7 @@ class RanksUpdater
       rank.author_name = message_information_parsed['author']['username']
       rank.author_avatar = message_information_parsed['author']['avatar']
       rank.author_discriminator = message_information_parsed['author']['discriminator']
+      rank.posted_at = message_information_parsed['timestamp']
     end
   end
 
