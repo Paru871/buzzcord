@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_30_012240) do
+ActiveRecord::Schema.define(version: 2022_05_31_120420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2022_05_30_012240) do
     t.string "author_discriminator", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "posted_at", null: false
     t.index ["order"], name: "index_ranks_on_order"
   end
 
