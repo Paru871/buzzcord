@@ -39,7 +39,7 @@ class PostBuzzcord
     embed_json['footer']['icon_url'] = 'https://cdn.discordapp.com/embed/avatars/0.png'
     embed_json['timestamp'] = rank.posted_at
     embed_json['thumbnail']['url'] = rank.author_avatar
-    embed_json['fields'][0]['name'] = ":tada: 獲得絵文字スタンプ数:tada: "
+    embed_json['fields'][0]['name'] = ':tada: 獲得絵文字スタンプ数:tada: '
     embed_json['fields'][0]['value'] = rank.total_emojis_count.to_s
     if attachment.present?
       embed_json['image']['url'] = "https://cdn.discordapp.com/attachments/#{rank.channel_id}/#{attachment.attachment_id}/#{attachment.attachment_filename}"
