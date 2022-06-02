@@ -104,7 +104,6 @@ GEM
     crass (1.0.6)
     diff-lcs (1.5.0)
     digest (3.1.0)
-    discord-notifier (1.0.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.6)
@@ -368,7 +367,6 @@ DEPENDENCIES
   bullet
   byebug
   capybara
-  discord-notifier
   discordrb!
   dotenv-rails
   factory_bot_rails
