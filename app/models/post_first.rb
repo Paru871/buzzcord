@@ -2,8 +2,8 @@
 
 class PostFirst
   def self.message(
-    message,
-    username: 'ピヨルド',
+    _message,
+    # username: 'ピヨルド',
     webhook_url: ENV['DISCORD_WEBHOOK_URL']
   )
 
@@ -26,16 +26,16 @@ class PostFirst
     # bot.run
 
     client = Discordrb::Webhooks::Client.new(url: webhook_url)
-        client.execute do |builder|
-          builder.add_embed do |embed|
-            embed.title = 'fugafuga'
-            embed.colour = 0x3c9b00
-            embed.url = "https://itunesconnect.apple.com"
-            embed.description = "New build uploaded to iTunes Connect with number "
-            embed.author = Discordrb::Webhooks::EmbedAuthor.new(name: "iTunes Connect", url: "https://itunesconnect.apple.com", icon_url: "https://i.imgur.com/68CyCSp.png")
-            embed.timestamp = Time.now
-          end
-        end
+    client.execute do |builder|
+      builder.add_embed do |embed|
+        embed.title = 'fugafuga'
+        embed.colour = 0x3c9b00
+        embed.url = 'https://itunesconnect.apple.com'
+        embed.description = 'New build uploaded to iTunes Connect with number '
+        embed.author = Discordrb::Webhooks::EmbedAuthor.new(name: 'iTunes Connect', url: 'https://itunesconnect.apple.com', icon_url: 'https://i.imgur.com/68CyCSp.png')
+        embed.timestamp = Time.zone.now
+      end
+    end
   end
 
   def self.notify(
