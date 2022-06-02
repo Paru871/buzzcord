@@ -22,7 +22,7 @@ class PostBuzzcord
 
   def first_message(rank)
     {
-      content: "おはようございます😃\n昨日のこのdiscordサーバー内でのバズコードランキング第1位は…\n<@#{rank.author_id}>さんのこの発言、獲得絵文字スタンプ数はなんと「#{rank.total_emojis_count}」でした！\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.channel_id}/#{rank.message_id}",
+      content: "おはようございます😃\n昨日のこのdiscordサーバー内でのバズコードランキング第1位は…\n「#{rank.channel_name}チャンネル」での<@#{rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.channel_id}/#{rank.message_id}",
       embed: nil
     }
   end
@@ -31,14 +31,16 @@ class PostBuzzcord
     message = nil
     file = File.read('./embed.json')
     embed_json = JSON.parse(file)['embed']
+    embed_json['title'] = rank.content
     embed_json['color'] = 599_498
-    embed_json['description'] = rank.content
     embed_json['author']['name'] = rank.author_name
     embed_json['author']['icon_url'] = rank.author_avatar
     embed_json['footer']['text'] = 'posted:'
     embed_json['footer']['icon_url'] = 'https://cdn.discordapp.com/embed/avatars/0.png'
     embed_json['timestamp'] = rank.posted_at
     embed_json['thumbnail']['url'] = rank.author_avatar
+    embed_json['fields'][0]['name'] = ':tada: 獲得絵文字スタンプ数:tada: '
+    embed_json['fields'][0]['value'] = rank.total_emojis_count.to_s
     if attachment.present?
       embed_json['image']['url'] = "https://cdn.discordapp.com/attachments/#{rank.channel_id}/#{attachment.attachment_id}/#{attachment.attachment_filename}"
     end
