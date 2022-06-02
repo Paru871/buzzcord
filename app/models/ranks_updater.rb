@@ -66,6 +66,7 @@ class RanksUpdater
                                       message_information_parsed['author']['discriminator'])
       rank.author_discriminator = message_information_parsed['author']['discriminator']
       rank.posted_at = message_information_parsed['timestamp']
+      rank.total_emojis_count = message[1]
     end
   end
 
@@ -91,6 +92,14 @@ class RanksUpdater
   end
 
   def avatar_url(uid, avatar_id, discriminator)
+    if avatar_id
+      Discordrb::API::User.avatar_url(uid, avatar_id)
+    else
+      Discordrb::API::User.default_avatar(discriminator)
+    end
+  end
+
+  def count_total_emojis(_emoji_hash)
     if avatar_id
       Discordrb::API::User.avatar_url(uid, avatar_id)
     else
