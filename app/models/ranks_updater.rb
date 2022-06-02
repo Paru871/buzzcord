@@ -61,7 +61,8 @@ class RanksUpdater
       rank.content = message_information_parsed['content']
       rank.author_id = message_information_parsed['author']['id']
       rank.author_name = message_information_parsed['author']['username']
-      rank.author_avatar = message_information_parsed['author']['avatar']
+      # rank.author_avatar = message_information_parsed['author']['avatar']
+      rank.author_avatar = avatar_url(message_information_parsed['author']['id'], message_information_parsed['author']['avatar'], message_information_parsed['author']['discriminator'])
       rank.author_discriminator = message_information_parsed['author']['discriminator']
       rank.posted_at = message_information_parsed['timestamp']
     end
@@ -85,6 +86,14 @@ class RanksUpdater
         attachment.attachment_id = hash_attachment['id']
         attachment.attachment_filename = hash_attachment['filename']
       end
+    end
+  end
+
+  def avatar_url(uid, avatar_id, discriminator)
+    if avatar_id
+      Discordrb::API::User.avatar_url(uid, avatar_id)
+    else
+      Discordrb::API::User.default_avatar(discriminator)
     end
   end
 end
