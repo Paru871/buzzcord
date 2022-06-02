@@ -37,6 +37,11 @@
           "icon_url": "",
           "proxy_icon_url": ""
       },
-      "fields": []
+      "fields": [
+        {
+            "name": "",
+            "value": ""
+          }
+      ]
   }
 }
