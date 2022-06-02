@@ -1,0 +1,42 @@
+{
+  "embed": {
+      "title": "",
+      "type": "rish",
+      "description": "",
+      "url": "",
+      "color": 0,
+      "footer": {
+          "text": "",
+          "icon_url": "",
+          "proxy_icon_url": ""
+      },
+      "image": {
+          "url": "",
+          "proxy_url": "",
+          "hright": 0,
+          "width": 0
+      },
+      "thumbnail": {
+          "url": "",
+          "proxy_url": "",
+          "height": 0,
+          "width": 0
+      },
+      "video": {
+          "url": "",
+          "height": 0,
+          "width": 0
+      },
+      "provider": {
+          "name": "",
+          "url": ""
+      },
+      "author": {
+          "name": "",
+          "url": "",
+          "icon_url": "",
+          "proxy_icon_url": ""
+      },
+      "fields": []
+  }
+}

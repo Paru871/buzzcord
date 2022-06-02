@@ -10,7 +10,7 @@ class User < ApplicationRecord
     avatar = auth_hash[:extra][:raw_info][:avatar]
     discriminator = auth_hash[:extra][:raw_info][:discriminator]
 
-    # サーバーメンバーではない場合リクエストに失敗してログインできない
+    # そのサーバーの所属メンバーかどうかを確認する
     Discordrb::API::Server.resolve_member("Bot #{ENV['DISCORD_BOT_TOKEN']}", ENV['DISCORD_SERVER_ID'], uid)
 
     User.find_or_create_by!(provider: provider, uid: uid) do |user|
