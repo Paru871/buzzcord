@@ -1,13 +1,28 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
-body { background-color: #dee7eb; }
+// body { background-color: #f0faff; }
 
 .bg-mythemea {
-  background-color: #6873d1 !important;
+  background-color: #f0faff !important;
 }
 .bg-mythemeb {
-  background-color: #91d0ed !important;
+  background-color: #dee7eb !important;
 }
 .bg-mythemec {
+  background-color: #91d0ed !important;
+}
+.bg-mythemed {
+  background-color: #6873d1 !important;
+}
+.bg-mythemee {
   background-color: #3f4678 !important;
+}
+.btnx-mythemed {
+  background: #6873d1; border: 2px solid #6873d1; 
+}
+.btn-mythemed {
+  background-color: #6873d1 !important;
+}
+.text-mythemee {
+  color: #3f4678 !important;
 }

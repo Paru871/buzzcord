@@ -1,9 +1,30 @@
-/ h1 Homes#top
-/ p Find me in app/views/homes/top.html.slim
-= image_tag('buzzcord_img.png', size: '300x300', alt: 'buzzcord')
+.homes
+  .text-center.m-5
+    = image_tag('buzzcord_img.png', size: '250x250', alt: 'buzzcord', class: 'rounded')
 
-/ - if logged_in?
-/   = link_to 'ログアウト', logout_path
-/ - else
-  = link_to 'Discordでログイン', 'auth/discord', method: :post
-= link_to 'Discordでログイン', '/auth/discord', method: :post
+  .text-center.text-mythemee
+    p.lead.my-3.fs-4.fw-bold
+      | Discordサーバー内で昨日バズった発言のランキングをチェックしよう！
+    p.fs-5
+      | ※「バズった」とは → Discordに書いた発言がたくさんの人に注目されて絵文字スタンプが多く押されたこと
+
+  .my-5.text-center
+    = button_to 'Discord でログイン', '/auth/discord', method: :post, class: 'btn btn-secondary btnx-mythemed btn-lg rounded-pill'
+
+  hr
+  hr
+  p.m-2.img-responsive
+    = image_tag '/discord_example.png', width: '90%', height: '80%'
+    br
+    | Discordの発言に押された絵文字スタンプ数を毎日集計！
+  hr
+  p.m-2.img-responsive
+    = image_tag '/post_buzzcord_to_discord.png', width: '90%', height: '80%'
+    br
+    | 毎日決まった時間に前日のバズった発言第1位をDiscordでお知らせします。
+  hr
+  p.m-2.img-responsive
+    = image_tag '/post_buzzcord_to_discord.png', width: '90%', height: '80%'
+    br
+    | このサイトにログインすると昨日のバズった発言第1位〜5位がチェックできます！
+    .pb-5

@@ -1,21 +1,35 @@
-h1 ランキング一覧
-
-.mb-3
-table.table.table-striped.table-hover
-  thead.thead-default
-    tr
-      th = Rank.human_attribute_name(:order)
-      th = Rank.human_attribute_name(:channel_name)
-      th = Rank.human_attribute_name(:author_name)
-      th = Rank.human_attribute_name(:content)
-      th
-  tbody
-    - @ranks.each do |rank|
-      tr
-        td = rank.order
-        td = rank.channel_name
-        td = rank.author_name
-        td = rank.content
-        td
-.mb-3
-= link_to 'ログアウト', logout_path, method: :delete
+.base-container.mw-xl
+  .texts-wrapper
+    .contents-title.text-center
+      h1 #{@ranks.first.created_at.ago(1.day).strftime('%Y/%m/%d')}のBuzzcordランキング一覧
+      .card-deck
+        - @ranks.each do |rank|
+          .card.content-card.bg-mythemea.shadow.mb-3.bg-body.rounded
+            .card-header.fs-3.fw-bold
+              | Rank:
+              = rank.order
+            .card-body
+              h5.card-title
+                = rank.author_name
+              p.card-text
+                = rank.channel_name
+                = rank.thread_name
+                br
+                img width="100" height="100" alt="画像" src="#{rank.author_avatar}"
+                br
+                = rank.content
+                br
+                - rank.emojis.each do |emoji|
+                  = emoji.emoji_name
+                  = emoji.emoji_id
+                  = emoji.count
+                  = '  '
+                br
+                - rank.attachments.each do |attachment|
+                  = attachment.attachment_id
+                  = attachment.attachment_filename
+                br
+                = l rank.posted_at, format: :short
+              a.btn.btn-primary href="#"  Discord
+.mb-5
+  = link_to 'ログアウト', logout_path, method: :delete
