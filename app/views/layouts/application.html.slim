@@ -12,15 +12,16 @@ html
     = favicon_link_tag '/favicon.ico'
     = favicon_link_tag '/apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png'
     = favicon_link_tag '/android-chrome-256x256.png', rel: 'icon', sizes: '256x256', type: 'image/png'
-
-    script src="https://kit.fontawesome.com/ee5a02ffb8.js" crossorigin="anonymous"
+    link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" /
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-mythemee.px-3
       .navbar-brand
         = image_tag('/buzzcord.png', size: '60x60', alt: 'buzzcord', class: 'me-auto')
       .navbar-nav
         = button_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-outline-warning rounded-pill'
-        = image_tag current_user.avatar, class: 'rounded-circle', size: '60x60'
+      .text-white
+        = current_user.name
+      = image_tag current_user.avatar, class: 'rounded-circle', size: '60x60'
     .container
       - if flash.notice
         .flash-message.notice.alert.alert-danger = notice
@@ -38,7 +39,7 @@ html
           .col-md-5.col-lg-4.ml-lg-0.text-center.text-md-end
             /! Twitter
             a.btn.btn-outline-light.btn-floating.m-1 href="https://twitter.com/Paru871" role="button"
-              i.fab.fa-twitter
+              i.bi.bi-twitter
             /! Github
             a.btn.btn-outline-light.btn-floating.m-1 href="https://github.com/Paru871/buzzcord/" role="button"
-              i.fab.fa-github
+              i.bi.bi-github
