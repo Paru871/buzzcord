@@ -20,10 +20,15 @@
                 = rank.content
                 br
                 - rank.emojis.each do |emoji|
-                  = emoji.emoji_name
-                  = emoji.emoji_id
+                  - if emoji.emoji_id.present?
+                    img.emoji alt="#{emoji.emoji_name}" data-id="#{emoji.emoji_id}" data-type="emoji" draggable="false" src="https://cdn.discordapp.com/emojis/#{emoji.emoji_id}.webp?size=16&quality=lossless" /
+                  - else
+                    = emoji.emoji_name
                   = emoji.count
                   = '  '
+                  / img.emoji alt="ohayou" data-id="819848101602656276" data-type="emoji" draggable="false" src="https://cdn.discordapp.com/emojis/819848101602656276.webp?size=16&quality=lossless" /
+                  / img.emoji alt="iine" data-id="975374141161082901" data-type="emoji" draggable="false" src="https://cdn.discordapp.com/emojis/975374141161082901.webp?size=16&quality=lossless" /
+
                 br
                 - rank.attachments.each do |attachment|
                   = attachment.attachment_id
