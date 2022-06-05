@@ -40,7 +40,7 @@ class PostBuzzcord
 
   def main_message(rank, attachment)
     message = nil
-    channel = rank.thread_id.presence || rank.channel.id
+    channel = rank.thread_id.presence || rank.channel_id
     file = File.read('./embed.json')
     embed_json = JSON.parse(file)['embed']
     embed_json['title'] = rank.content
