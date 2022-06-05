@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title
+      | Buzzcord
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    script src="https://kit.fontawesome.com/ee5a02ffb8.js" crossorigin="anonymous"
+  body
+    .container
+      - if flash.notice
+        .flash-message.notice.alert.alert-danger = notice
+      - if flash.alert
+        .flash-message.alert.alert.alert-warning = alert
+      = yield
+  .container.my-5
+  footer.text-center.text-lg-start.text-white style='background-color: #3f4678'
+    .container.p-4.pb-0
+      section.p-3.pt-0
+        .row.d-flex.align-items-center
+          .col-md-7.col-lg-8.text-center.text-md-start
+            .p-3
+              | © 2022 Copyright: Paru871
+          .col-md-5.col-lg-4.ml-lg-0.text-center.text-md-end
+            /! Twitter
+            a.btn.btn-outline-light.btn-floating.m-1 href="https://twitter.com/Paru871" role="button"
+              i.fab.fa-twitter
+            /! Github
+            a.btn.btn-outline-light.btn-floating.m-1 href="https://github.com/Paru871/buzzcord/" role="button"
+              i.fab.fa-github

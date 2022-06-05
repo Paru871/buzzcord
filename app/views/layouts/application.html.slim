@@ -9,8 +9,37 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag '/favicon.ico'
+    = favicon_link_tag '/apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png'
+    = favicon_link_tag '/android-chrome-256x256.png', rel: 'icon', sizes: '256x256', type: 'image/png'
+    link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" /
   body
-    .app-title.navbar.navbar-expand-md.navbar-light.bg-mythemeb
-      .navbar-brand.ms-0 Buzzcord
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-mythemee.px-3
+      .container-fluid
+        .navbar-brand
+          = image_tag('/buzzcord.png', size: '70x70', alt: 'buzzcord')
+        .col-md-0.text-end
+          .text-white
+            = current_user.name
+            = image_tag current_user.avatar, class: 'rounded-circle mx-3', size: '60x60'
     .container
+      - if flash.notice
+        .flash-message.notice.alert.alert-danger = notice
+      - if flash.alert
+        .flash-message.alert.alert.alert-warning = alert
       = yield
+  .container.my-5
+  footer.text-center.text-lg-start.text-white style='background-color: #3f4678'
+    .container.p-2.pb-0
+      section.p-3.pt-0
+        .row.d-flex.align-items-center
+          .col-md-7.col-lg-8.text-center.text-md-start
+            .p-3
+              | © 2022 Copyright: Paru871
+              a.btn.btn-outline-light.btn-floating.ms-3 href="https://twitter.com/Paru871" role="button"
+                i.bi.bi-twitter
+              /! Github
+              a.btn.btn-outline-light.btn-floating.m-1 href="https://github.com/Paru871/buzzcord/" role="button"
+                i.bi.bi-github
+          .col-md-5.col-lg-4.ml-lg-0.text-center.text-md-end
+            = button_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-outline-warning rounded-pill'
