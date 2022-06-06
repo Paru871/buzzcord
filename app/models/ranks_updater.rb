@@ -12,8 +12,8 @@ class RanksUpdater
   private
 
   def create_ranks
-    # yesterday_reactions = Reaction.where(reacted_at: Time.zone.yesterday.all_day)
-    yesterday_reactions = Reaction.all
+    yesterday_reactions = Reaction.where(reacted_at: Time.zone.yesterday.all_day)
+    # yesterday_reactions = Reaction.all
     # sorted_yesterday_massages = yesterday_reactions.limit(30).order('sum_point desc').group(:message_id).sum(:point)
     sorted_yesterday_massages = yesterday_reactions.order('sum_point desc').group(:message_id).sum(:point)
 
