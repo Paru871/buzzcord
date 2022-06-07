@@ -4,16 +4,22 @@ class PostBuzzcord
   def initialize
     @host = ENV['URL_HOST']
     @rank = Rank.first
-    @emoji_array = Emoji.where(rank_id: @rank.id).pluck(:emoji_name, :emoji_id, :count)
-    @attachment = Attachment.where(rank_id: @rank.id).first
+    @emoji_array = Emoji.where(rank_id: @rank.id).pluck(:emoji_name, :emoji_id, :count) if @rank.present?
+    @attachment = Attachment.where(rank_id: @rank.id).first if @rank.present?
   end
 
   def post
+    if @rank.blank?
+      post_message(reaction_zero)
+      return
+    end
+
     if @rank.thread_id.present?
       post_message(first_message_thread(@rank))
     else
       post_message(first_message_channel(@rank))
     end
+
     main_message(@rank, @attachment)
     post_message(second_message)
   end
@@ -22,6 +28,13 @@ class PostBuzzcord
 
   def post_message(message)
     Discordrb::API::Channel.create_message("Bot #{ENV['DISCORD_BOT_TOKEN']}", ENV['DISCORD_CHANNEL_ID'], message[:content], false, message[:embed])
+  end
+
+  def reaction_zero
+    {
+      content: "おはようございます😃Buzzcordお知らせbotです。\n昨日このdiscordサーバー内では、絵文字スタンプの反応がありませんでした。\n素敵な1日をお過ごしください👍",
+      embed: nil
+    }
   end
 
   def first_message_thread(rank)
