@@ -1,8 +1,8 @@
 .base-container.mw-xl
   .texts-wrapper
     .contents-title.text-center.my-4
-      h1.bg-mythemec.my-5.py-2
-        | サーバー名: #{JSON.parse(Discordrb::API::Server.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", ENV['DISCORD_SERVER_ID']))['name']}
+      h2.bg-mythemec.py-2.rounded-pill
+        | サーバー名: #{@guild_name}
       - if @ranks.empty?
         h1.mb-5 #{Time.zone.yesterday.strftime('%Y/%m/%d')}のBuzzcordランキング一覧
         h4
@@ -11,7 +11,7 @@
         h1 #{@ranks.first.created_at.ago(1.day).strftime('%Y/%m/%d')}のBuzzcordランキング一覧
         .card-deck.mt-4
           - @ranks.each do |rank|
-            .card.content-card.bg-mythemea.shadow.mb-3.bg-body.rounded.text-center
+            .card.content-card.bg-mythemea.mb-3.bg-body.rounded.text-center
               .card-header.fs-3.fw-bold.bg-mythemeb
                 | Rank:
                 = rank.order
@@ -24,7 +24,12 @@
                   - if rank.thread_name.present?
                     = "、#{rank.thread_name}スレッド"
                 h5.card-text
-                  = rank.content
+                  / = rank.content
+                  - rank.content.each do |word|
+                    - if word.instance_of?(Array)
+                      img.emoji alt="#{word[0]}" aria-label="#{word[0]}" data-id="#{word[1]}" data-type="emoji" draggable="false" src="https://cdn.discordapp.com/emojis/#{word[1]}.webp?size=32&quality=lossless" /
+                    - else
+                      = word
                   br
                   - rank.attachments.each do |attachment|
                     img.img-fluid.w-25 src="https://cdn.discordapp.com/attachments/#{rank.thread_id || rank.channel_id}/#{attachment.attachment_id}/#{attachment.attachment_filename}" class="mb-3" /

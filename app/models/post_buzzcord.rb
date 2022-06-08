@@ -56,7 +56,7 @@ class PostBuzzcord
     channel = rank.thread_id || rank.channel_id
     file = File.read('./embed.json')
     embed_json = JSON.parse(file)['embed']
-    embed_json['title'] = rank.content
+    embed_json['title'] = rank.content_post
     embed_json['color'] = 0x2727ff
     embed_json['author']['name'] = rank.author_name
     embed_json['author']['icon_url'] = rank.author_avatar
