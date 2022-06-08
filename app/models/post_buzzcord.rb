@@ -57,7 +57,7 @@ class PostBuzzcord
     file = File.read('./embed.json')
     embed_json = JSON.parse(file)['embed']
     embed_json['title'] = rank.content
-    embed_json['color'] = 599_498
+    embed_json['color'] = 0x2727ff
     embed_json['author']['name'] = rank.author_name
     embed_json['author']['icon_url'] = rank.author_avatar
     embed_json['footer']['text'] = 'posted:'
@@ -74,11 +74,11 @@ class PostBuzzcord
 
   def second_message
     {
-      content: '昨日のバズコード2位〜5位はサイトにてお知らせしていますのでぜひチェックしてね！',
+      content: nil,
       embed:
       {
-        description: "昨日の全順位は[こちら](#{ENV['URL_HOST']})にアクセス！",
-        color: 4_642_800
+        description: "昨日のバズコード2位〜5位はサイトにてお知らせしていますのでぜひチェックしてね👍\n昨日の全順位は[こちら](#{ENV['URL_HOST']})にアクセス！",
+        color: 0x7fffff
       }
     }
   end
