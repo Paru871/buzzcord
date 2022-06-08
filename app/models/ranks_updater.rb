@@ -59,6 +59,7 @@ class RanksUpdater
       rank.thread_name = channel_hash[:thread_name]
       rank.message_id = message[0]
       rank.content = convert_custom_emoji(message_information_parsed['content'])
+      rank.content_post = message_information_parsed['content']
       rank.author_id = message_information_parsed['author']['id']
       rank.author_name = message_information_parsed['author']['username']
       # rank.author_avatar = message_information_parsed['author']['avatar']
@@ -73,14 +74,14 @@ class RanksUpdater
   def convert_custom_emoji(content)
     regexp = /(<:[a-z]+:[0-9]+>)/
     regexp2 = /<(:[a-z]+:)([0-9]+)>/
-    content.split(regexp).map { |word|
+    content.split(regexp).map do |word|
       matched = word.match(regexp2)
       if matched
         Array.new([matched[1], matched[2]])
       else
         word
       end
-    }
+    end
   end
 
   def create_emojis(emoji_hash, yesterday_reactions, message, rank_record)

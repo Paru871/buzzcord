@@ -1,13 +1,8 @@
 .base-container.mw-xl
   .texts-wrapper
     .contents-title.text-center.my-4
-<<<<<<< Updated upstream
-      h1.bg-mythemec.my-5.py-2
-        | サーバー名: #{JSON.parse(Discordrb::API::Server.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", ENV['DISCORD_SERVER_ID']))['name']}
-=======
       h2.bg-mythemec.py-2.rounded-pill
         | サーバー名: #{@guild_name}
->>>>>>> Stashed changes
       - if @ranks.empty?
         h1.mb-5 #{Time.zone.yesterday.strftime('%Y/%m/%d')}のBuzzcordランキング一覧
         h4
