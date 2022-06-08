@@ -12,8 +12,8 @@ class RanksUpdater
   private
 
   def create_ranks
-    yesterday_reactions = Reaction.where(reacted_at: Time.zone.yesterday.all_day)
-    # yesterday_reactions = Reaction.all
+    # yesterday_reactions = Reaction.where(reacted_at: Time.zone.yesterday.all_day)
+    yesterday_reactions = Reaction.all
     # sorted_yesterday_massages = yesterday_reactions.limit(30).order('sum_point desc').group(:message_id).sum(:point)
     sorted_yesterday_massages = yesterday_reactions.order('sum_point desc').group(:message_id).sum(:point)
 
@@ -58,7 +58,7 @@ class RanksUpdater
       rank.thread_id = channel_hash[:thread_id]
       rank.thread_name = channel_hash[:thread_name]
       rank.message_id = message[0]
-      rank.content = message_information_parsed['content']
+      rank.content = convert_custom_emoji(message_information_parsed['content'])
       rank.author_id = message_information_parsed['author']['id']
       rank.author_name = message_information_parsed['author']['username']
       # rank.author_avatar = message_information_parsed['author']['avatar']
@@ -68,6 +68,19 @@ class RanksUpdater
       rank.posted_at = message_information_parsed['timestamp']
       rank.total_emojis_count = message[1]
     end
+  end
+
+  def convert_custom_emoji(content)
+    regexp = /(<:[a-z]+:[0-9]+>)/
+    regexp2 = /<(:[a-z]+:)([0-9]+)>/
+    content.split(regexp).map { |word|
+      matched = word.match(regexp2)
+      if matched
+        Array.new([matched[1], matched[2]])
+      else
+        word
+      end
+    }
   end
 
   def create_emojis(emoji_hash, yesterday_reactions, message, rank_record)
