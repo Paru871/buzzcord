@@ -15,6 +15,10 @@ class SessionsController < ApplicationController
     redirect_to homes_path, notice: 'ログアウトしました。'
   end
 
+  def failure
+    redirect_to homes_path, notice: 'ログインできませんでした。'
+  end
+
   private
 
   def redirect_back_or(default)
