@@ -2,7 +2,10 @@
 
 FactoryBot.define do
   factory :user do
-    uid { 'MyString' }
-    name { 'MyString' }
+    provider { 'discord' }
+    uid { '1234567' }
+    name { 'Mock User' }
+    discriminator { '1234' }
+    avatar { '98765' }
   end
 end
