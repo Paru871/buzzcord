@@ -2,17 +2,17 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Welcome', type: :system do
-  let(:user) { create(:user) }
+RSpec.describe 'Homes', type: :system do
+  let(:user) { FactoryBot.create(:user) }
 
   it 'ユーザがログインできる' do
-    login_user user
+    sign_in_as(user)
     expect(page).to have_content 'ログインしました。'
     expect(page).to have_content 'のBuzzcordランキング一覧'
   end
 
   it 'ログインしているユーザがログアウトできる' do
-    login_user user
+    sign_in_as(user)
     # find('.navbar-link').hover
     click_on 'ログアウト'
 
@@ -27,7 +27,7 @@ RSpec.describe 'Welcome', type: :system do
   end
 
   it 'ログインしているユーザが / ページを表示' do
-    login_user user
+    sign_in_as(user)
     visit root_path
 
     expect(page).to have_content 'のBuzzcordランキング一覧'
