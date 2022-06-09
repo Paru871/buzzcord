@@ -85,6 +85,8 @@ class RanksUpdater
   end
 
   def create_emojis(emoji_hash, yesterday_reactions, message, rank_record)
+    return if emoji_hash.nil?
+
     emoji_hash.each do |hash_emoji|
       next unless yesterday_reactions.where(message_id: message[0], emoji_name: hash_emoji['emoji']['name']).sum(:point).positive?
 
