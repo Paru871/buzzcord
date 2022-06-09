@@ -7,13 +7,13 @@ RSpec.describe 'Homes', type: :system do
 
   it 'ユーザがログインできる' do
     sign_in_as(user)
+
     expect(page).to have_content 'ログインしました。'
     expect(page).to have_content 'のBuzzcordランキング一覧'
   end
 
   it 'ログインしているユーザがログアウトできる' do
     sign_in_as(user)
-    # find('.navbar-link').hover
     click_on 'ログアウト'
 
     expect(page).to have_content 'ログアウトしました。'
