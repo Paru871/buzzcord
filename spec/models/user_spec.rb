@@ -3,17 +3,21 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe '.find_or_create_from_auth_hash!' do
+  describe '.find_or_create_from_auth_hash' do
+    before do
+      @uid = '123456'
+      stub_request(:get, "#{Discordrb::API.api_base}/guilds/#{ENV['DISCORD_SERVER_ID']}/members/#{@uid}")
+    end
+
     let(:auth_hash) do
       {
         provider: 'discord',
-        uid: '572729242928939017',
+        uid: @uid,
         info: {
-          name: 'Buzzcord'
+          name: 'carol'
         },
         extra: {
           raw_info: {
-            avatar: '5555',
             discriminator: '1234'
           }
         }
@@ -24,10 +28,10 @@ RSpec.describe User, type: :model do
       it '引数で設定した属性のUserオブジェクトが返ること' do
         user = User.find_or_create_from_auth_hash!(auth_hash)
         expect(user.provider).to eq 'discord'
-        expect(user.uid).to eq '572729242928939017'
-        expect(user.name).to eq 'Buzzcord'
-        expect(user.avatar).to eq 'https://cdn.discordapp.com/avatars/572729242928939017/5555.webp'
+        expect(user.uid).to eq '123456'
+        expect(user.name).to eq 'carol'
         expect(user.discriminator).to eq '1234'
+        expect(User.find_or_create_from_auth_hash!(auth_hash)).to eq User.find_by(uid: @uid)
         expect(user).to be_persisted
       end
 
@@ -37,7 +41,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'uidに対応するUserが既に作成されているとき' do
-      let!(:created_user) { FactoryBot.create(:user, uid: '572729242928939017') }
+      let!(:created_user) { FactoryBot.create(:user, uid: @uid) }
 
       it '引数に対応するUserレコードのオブジェクトが返ること' do
         user = User.find_or_create_from_auth_hash!(auth_hash)

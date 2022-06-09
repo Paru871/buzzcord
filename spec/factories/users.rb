@@ -4,8 +4,8 @@ FactoryBot.define do
   factory :user do
     provider { 'discord' }
     uid { '1234567' }
-    name { 'Mock User' }
+    name { 'Mock' }
     discriminator { '1234' }
-    avatar { '98765' }
+    avatar { 'https://cdn.discordapp.com/embed/avatars/3.png' }
   end
 end
