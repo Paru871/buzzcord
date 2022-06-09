@@ -12,7 +12,7 @@ class RanksUpdater
   private
 
   def create_ranks
-    yesterday_reactions = Reaction.where(reacted_at: Time.zone.yesterday.all_day)
+    yesterday_reactions = Reaction.where(reacted_at: Time.zone.today.all_day)
     # yesterday_reactions = Reaction.all
     # sorted_yesterday_massages = yesterday_reactions.limit(30).order('sum_point desc').group(:message_id).sum(:point)
     sorted_yesterday_massages = yesterday_reactions.order('sum_point desc').group(:message_id).sum(:point)
@@ -85,6 +85,8 @@ class RanksUpdater
   end
 
   def create_emojis(emoji_hash, yesterday_reactions, message, rank_record)
+    return if emoji_hash.nil?
+
     emoji_hash.each do |hash_emoji|
       next unless yesterday_reactions.where(message_id: message[0], emoji_name: hash_emoji['emoji']['name']).sum(:point).positive?
 

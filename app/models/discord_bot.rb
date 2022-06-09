@@ -19,12 +19,12 @@ class DiscordBot
       end
     end
 
-    # @bot.reaction_remove do |event|
-    #   if event.server.id.to_s == ENV['DISCORD_SERVER_ID']
-    #     point = -1
-    #     reaction_create(event, point)
-    #   end
-    # end
+    @bot.reaction_remove do |event|
+      if event.server.id.to_s == ENV['DISCORD_SERVER_ID']
+        point = -1
+        reaction_create(event, point)
+      end
+    end
   end
 
   def member_watching
