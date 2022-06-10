@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   before_action :login_required
 
+  GUILD_NAME = JSON.parse(Discordrb::API::Server.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", ENV['DISCORD_SERVER_ID']))['name']
+
   private
 
   def current_user

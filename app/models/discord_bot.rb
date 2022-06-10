@@ -11,6 +11,8 @@ class DiscordBot
     @bot.run
   end
 
+  private
+
   def recordings
     @bot.reaction_add do |event|
       if event.server.id.to_s == ENV['DISCORD_SERVER_ID']
@@ -50,8 +52,6 @@ class DiscordBot
       end
     end
   end
-
-  private
 
   def reaction_create(event, point)
     Reaction.create do |reaction|
