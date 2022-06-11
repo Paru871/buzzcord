@@ -12,7 +12,8 @@ class RankOrderMaker
   def messages_sorted_by_points
     Reaction
       .where(reacted_at: Time.zone.yesterday.all_day)
-      .order('sum_point desc').group(:channel_id, :message_id).sum(:point)
+      .order('sum_point desc').order(:message_id)
+      .group(:channel_id, :message_id).sum(:point)
   end
 
   def make_channel_array(message)
