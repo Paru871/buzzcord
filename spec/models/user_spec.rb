@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe '.find_or_create_from_auth_hash' do
+  describe '#find_or_create_from_auth_hash!' do
     before do
       @uid = '123456'
       stub_request(:get, "#{Discordrb::API.api_base}/guilds/#{ENV['DISCORD_SERVER_ID']}/members/#{@uid}")
