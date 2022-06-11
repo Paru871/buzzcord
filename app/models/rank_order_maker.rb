@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 class RankOrderMaker
-  def each_ranked_message
-    messages_sorted_by_points.first(5).each.with_index(1) do |message, index|
-      yield(message, index)
-    end
+  def each_ranked_message(&block)
+    messages_sorted_by_points.first(5).each.with_index(1, &block)
   end
 
   private

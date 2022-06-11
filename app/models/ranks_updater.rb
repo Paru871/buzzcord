@@ -39,7 +39,7 @@ class RanksUpdater
     parsed = JSON.parse(Discordrb::API::Channel.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", channel))
     if parsed.key?('thread_metadata')
       [channel, parsed['name'], parsed['parent_id'],
-        (JSON.parse(Discordrb::API::Channel.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", parsed['parent_id'])))['name']]
+       (JSON.parse(Discordrb::API::Channel.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", parsed['parent_id'])))['name']]
     else
       [nil, nil, channel, parsed['name']]
     end

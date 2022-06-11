@@ -78,26 +78,26 @@ RSpec.describe RankOrderMaker, type: :model do
       end
 
       expect(ranks.size).to eq 5
-      expect(ranks[11118]).to eq 1
-      expect(ranks[11116]).to eq 2
-      expect(ranks[11114]).to eq 3
-      expect(ranks[11112]).to eq 4
-      expect(ranks[11111]).to eq 5
+      expect(ranks[11_118]).to eq 1
+      expect(ranks[11_116]).to eq 2
+      expect(ranks[11_114]).to eq 3
+      expect(ranks[11_112]).to eq 4
+      expect(ranks[11_111]).to eq 5
     end
 
     it '昨日取得した総絵文字ポイントを取得できる' do
       ranks = {}
 
-      RankOrderMaker.new.each_ranked_message do |message, index|
+      RankOrderMaker.new.each_ranked_message do |message, _index|
         ranks[message[0][1]] = message[1]
       end
 
       expect(ranks.size).to eq 5
-      expect(ranks[11118]).to eq 11
-      expect(ranks[11116]).to eq 10
-      expect(ranks[11114]).to eq 9
-      expect(ranks[11112]).to eq 8
-      expect(ranks[11111]).to eq 7
+      expect(ranks[11_118]).to eq 11
+      expect(ranks[11_116]).to eq 10
+      expect(ranks[11_114]).to eq 9
+      expect(ranks[11_112]).to eq 8
+      expect(ranks[11_111]).to eq 7
     end
   end
 end
