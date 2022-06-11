@@ -2,7 +2,7 @@
 
 class RankOrderMaker
   def each_ranked_message
-    messages_sorted_by_points.each.with_index(1) do |message, index|
+    messages_sorted_by_points.first(5).each.with_index(1) do |message, index|
       yield(message, index, make_channel_array(message), parsed_message_info(message))
     end
   end
