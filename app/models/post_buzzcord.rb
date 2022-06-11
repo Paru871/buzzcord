@@ -39,8 +39,10 @@ class PostBuzzcord
 
   def first_message_thread(rank)
     {
+      # rubocop:disable Layout/LineLength
       content: "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「#{rank.channel_name}チャンネル、#{rank.thread_name}スレッド」での<@#{rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.thread_id}/#{rank.message_id}",
       embed: nil
+      # rubocop:enable Layout/LineLength
     }
   end
 
