@@ -32,21 +32,23 @@ class PostBuzzcord
 
   def reaction_zero
     {
-      content: "おはようございます😃Buzzcordお知らせbotです。\n昨日このdiscordサーバー内では、絵文字スタンプの反応がありませんでした。\n素敵な1日をお過ごしください👍",
+      content: "おはようございます😃Buzzcordお知らせbotです。\n昨日このDiscordサーバー内では、絵文字スタンプの反応がありませんでした。\n素敵な1日をお過ごしください👍",
       embed: nil
     }
   end
 
   def first_message_thread(rank)
     {
-      content: "おはようございます😃\n昨日のこのdiscordサーバー内でのバズコードランキング第1位は…\n「#{rank.channel_name}チャンネル、#{rank.thread_name}スレッド」での<@#{rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.thread_id}/#{rank.message_id}",
+      # rubocop:disable Layout/LineLength
+      content: "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「#{rank.channel_name}チャンネル、#{rank.thread_name}スレッド」での<@#{rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.thread_id}/#{rank.message_id}",
       embed: nil
+      # rubocop:enable Layout/LineLength
     }
   end
 
   def first_message_channel(rank)
     {
-      content: "おはようございます😃\n昨日のこのdiscordサーバー内でのバズコードランキング第1位は…\n「#{rank.channel_name}チャンネル」での<@#{rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.channel_id}/#{rank.message_id}",
+      content: "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「#{rank.channel_name}チャンネル」での<@#{rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.channel_id}/#{rank.message_id}",
       embed: nil
     }
   end
@@ -77,7 +79,7 @@ class PostBuzzcord
       content: nil,
       embed:
       {
-        description: "昨日のバズコード2位〜5位はサイトにてお知らせしていますのでぜひチェックしてね👍\n昨日の全順位は[こちら](#{ENV['URL_HOST']})にアクセス！",
+        description: "昨日のBuzzcord2位〜5位はサイトにてお知らせしていますのでぜひチェックしてね👍\n昨日のランキングは[こちら](#{ENV['URL_HOST']})にアクセス！",
         color: 0x7fffff
       }
     }

@@ -54,7 +54,7 @@ class DiscordBot
   end
 
   def reaction_create(event, point)
-    Reaction.create do |reaction|
+    Reaction.create! do |reaction|
       reaction.channel_id = event.message.channel.id
       reaction.message_id = event.message.id
       reaction.user_id = event.user.id
