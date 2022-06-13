@@ -6,14 +6,14 @@ class DiscordBot
   end
 
   def start
-    recordings
-    member_watching
+    record
+    member_watch
     @bot.run
   end
 
   private
 
-  def recordings
+  def record
     @bot.reaction_add do |event|
       if event.server.id.to_s == ENV['DISCORD_SERVER_ID']
         point = 1
@@ -29,7 +29,7 @@ class DiscordBot
     end
   end
 
-  def member_watching
+  def member_watch
     @bot.member_leave do |event|
       user_id = event.user.id
       user = User.find_by(uid: user_id)
@@ -42,7 +42,7 @@ class DiscordBot
 
       name = updated_member['username']
       discriminator = updated_member['discriminator']
-      avatar = avatar_url(uid, updated_member['avatar'], discriminator)
+      avatar = make_avatar_url(uid, updated_member['avatar'], discriminator)
 
       user = User.find_by(uid: uid)
       if user
@@ -65,7 +65,7 @@ class DiscordBot
     end
   end
 
-  def avatar_url(uid, avatar_id, discriminator)
+  def make_avatar_url(uid, avatar_id, discriminator)
     if avatar_id
       Discordrb::API::User.avatar_url(uid, avatar_id)
     else

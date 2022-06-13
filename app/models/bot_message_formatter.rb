@@ -61,7 +61,7 @@ class BotMessageFormatter
   end
 
   def make_header_thread
-    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「#{@rank.channel_name}チャンネル、#{@rank.thread_name}スレッド」での<@#{@rank.author_id}>さんのこちらの発言でした:tada:"
+    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「#{@rank.channel_name}チャンネル、#{@rank.thread_name}スレッド」での<@#{@rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.thread_id}/#{@rank.message_id}"
   end
 
   def make_header_channel
@@ -73,7 +73,7 @@ class BotMessageFormatter
   end
 
   def set_url
-    "https://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.channel_id}/#{@rank.message_id}"
+    "https://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.thread_id || @rank.channel_id}/#{@rank.message_id}"
   end
 
   def set_icon_url
