@@ -9,6 +9,6 @@ namespace :ranks do
   desc 'post buzzcord to discord channel'
   task post_buzzcord: :environment do
     formatter = BotMessageFormatter.new
-    PostBuzzcord.new.post(formatter)
+    PostBuzzcord.post(formatter)
   end
 end
