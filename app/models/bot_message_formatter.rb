@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class BotMessageFormatter
-
   def initialize
     @host = ENV['URL_HOST']
     @rank = Rank.first
@@ -19,9 +18,10 @@ class BotMessageFormatter
     end
   end
 
+  # rubocop:disable Metrics/MethodLength
   def embed_message
     if @rank.blank?
-      return nil
+      nil
     else
       {
         title: @rank.content_post,
@@ -51,6 +51,7 @@ class BotMessageFormatter
         ]
       }
     end
+    # rubocop:enable Metrics/MethodLength
   end
 
   private
@@ -64,11 +65,11 @@ class BotMessageFormatter
   end
 
   def make_header_channel
-    ("おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「#{@rank.channel_name}チャンネル」での<@#{@rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.channel_id}/#{@rank.message_id}")
+    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「#{@rank.channel_name}チャンネル」での<@#{@rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.channel_id}/#{@rank.message_id}"
   end
 
   def set_description
-    ""
+    ''
   end
 
   def set_url
@@ -76,7 +77,7 @@ class BotMessageFormatter
   end
 
   def set_icon_url
-    "https://cdn.discordapp.com/embed/avatars/0.png"
+    'https://cdn.discordapp.com/embed/avatars/0.png'
   end
 
   def set_icon_text
@@ -92,7 +93,7 @@ class BotMessageFormatter
   end
 
   def set_fields_name
-    ":tada: 獲得絵文字スタンプ数: #{@rank.total_emojis_count.to_s} :tada:"
+    ":tada: 獲得絵文字スタンプ数: #{@rank.total_emojis_count} :tada:"
   end
 
   def set_fields_value
