@@ -62,11 +62,11 @@ RSpec.describe BotMessageFormatter, type: :model do
 
   # rubocop:disable Metrics/MethodLength
   def message_header_thread
-    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「趣味の広場チャンネル、音楽スレッド」での<@45678>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/956175950180139078/23456/34567"
+    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「趣味の広場チャンネル、音楽スレッド」での<@45678>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/23456/34567"
   end
 
   def message_header_channel
-    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「趣味の広場チャンネル」での<@45678>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/956175950180139078/12345/34567"
+    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「趣味の広場チャンネル」での<@45678>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/12345/34567"
   end
 
   def reaction_zero_header
@@ -77,9 +77,9 @@ RSpec.describe BotMessageFormatter, type: :model do
     {
       title: 'テスト投稿です！',
       description: '',
-      url: 'https://discord.com/channels/956175950180139078/23456/34567',
+      url: "https://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/23456/34567",
       color: 0x2727ff,
-      timestamp: '2022-06-13 21:00:00.000000000 +0900',
+      timestamp: Date.current.in_time_zone,
       footer: {
         icon_url: 'https://cdn.discordapp.com/embed/avatars/0.png',
         text: 'posted:'
@@ -97,7 +97,7 @@ RSpec.describe BotMessageFormatter, type: :model do
       fields: [
         {
           name: ':tada: 獲得絵文字スタンプ数: 20 :tada:',
-          value: "昨日のBuzzcord2位〜5位はサイトにてお知らせしていますのでぜひチェックしてね👍\n昨日のランキングは[こちら](http://127.0.0.1:3000)にアクセス！"
+          value: "昨日のBuzzcord2位〜5位はサイトにてお知らせしていますのでぜひチェックしてね👍\n昨日のランキングは[こちら](#{ENV['URL_HOST']})にアクセス！"
         }
       ]
     }
