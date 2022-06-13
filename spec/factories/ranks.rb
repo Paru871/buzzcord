@@ -13,7 +13,7 @@ FactoryBot.define do
     author_name { 'Hana' }
     author_avatar { 'https://cdn.discordapp.com/embed/avatars/3.png' }
     author_discriminator { 5678 }
-    posted_at { Time.current }
+    posted_at { "2022-06-13 21:00:00" }
     total_emojis_count { 20 }
     content_post { 'テスト投稿です！' }
     # association :attachment
