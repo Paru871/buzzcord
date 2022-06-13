@@ -13,24 +13,30 @@ class RanksUpdater
 
   def create_ranks
     RankOrderMaker.new.each_ranked_message do |message, index|
-      rank_record = Rank.create do |rank|
-        rank.order = index
-        rank.thread_id = make_channel_array(message)[0]
-        rank.thread_name = make_channel_array(message)[1]
-        rank.channel_id = make_channel_array(message)[2]
-        rank.channel_name = make_channel_array(message)[3]
-        rank.message_id = message[0][1]
-        rank.content = convert_custom_emoji(message_info(message)['content'])
-        rank.content_post = message_info(message)['content']
-        rank.author_id = message_info(message)['author']['id']
-        rank.author_name = message_info(message)['author']['username']
-        rank.author_avatar = avatar_url(message_info)
-        rank.author_discriminator = message_info['author']['discriminator']
-        rank.posted_at = message_info(message)['timestamp']
-        rank.total_emojis_count = message[1]
-      end
+      rank_record = create_record(message, index)
       EmojisUpdater.new.create_emojis(message, rank_record)
-      AttachmentsUpdater.new.create_attachments(message_info(message), rank_record)
+      AttachmentsUpdater.new.create_attachments(message, rank_record)
+    end
+  end
+
+  def create_record(message, index)
+    channel_array = make_channel_array(message)
+    message_all_info = message_info(message)
+    Rank.create do |rank|
+      rank.order = index
+      rank.thread_id = channel_array[0]
+      rank.thread_name = channel_array[1]
+      rank.channel_id = channel_array[2]
+      rank.channel_name = channel_array[3]
+      rank.message_id = message[0][1]
+      rank.content = convert_custom_emoji(message_all_info['content'])
+      rank.content_post = message_all_info['content']
+      rank.author_id = message_all_info['author']['id']
+      rank.author_name = message_all_info['author']['username']
+      rank.author_avatar = avatar_url(message_all_info)
+      rank.author_discriminator = message_all_info['author']['discriminator']
+      rank.posted_at = message_all_info['timestamp']
+      rank.total_emojis_count = message[1]
     end
   end
 

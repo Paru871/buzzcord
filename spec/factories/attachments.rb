@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :attachment do
     rank_id { 1 }
-    attachment_id { 123456 }
-    attachment_filename {'55555.png'}
+    attachment_id { 123_456 }
+    attachment_filename { '55555.png' }
   end
 end
