@@ -8,14 +8,14 @@ FactoryBot.define do
     thread_id { 23_456 }
     thread_name { '音楽' }
     message_id { 34_567 }
-    content { ['音楽が好きだ！'] }
+    content { ['テスト投稿です！'] }
     author_id { 45_678 }
     author_name { 'Hana' }
     author_avatar { 'https://cdn.discordapp.com/embed/avatars/3.png' }
     author_discriminator { 5678 }
     posted_at { Time.current }
     total_emojis_count { 20 }
-    content_post { '音楽が好きだ！' }
+    content_post { 'テスト投稿です！' }
     # association :attachment
   end
 end
