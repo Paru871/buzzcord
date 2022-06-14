@@ -75,9 +75,7 @@ RSpec.describe BotMessageFormatter, type: :model do
 
   def message_embed_hash
     {
-      title: 'テスト投稿です！',
-      description: '',
-      url: "https://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/23456/34567",
+      description: 'テスト投稿です！',
       color: 0x2727ff,
       timestamp: Date.current.in_time_zone,
       footer: {
