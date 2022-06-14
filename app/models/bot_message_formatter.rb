@@ -24,9 +24,7 @@ class BotMessageFormatter
       nil
     else
       {
-        title: @rank.content_post,
-        description: set_description,
-        url: set_url,
+        description: @rank.content_post,
         color: 0x2727ff,
         timestamp: @rank.posted_at,
         footer: {
@@ -66,14 +64,6 @@ class BotMessageFormatter
 
   def make_header_channel
     "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「#{@rank.channel_name}チャンネル」での<@#{@rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.channel_id}/#{@rank.message_id}"
-  end
-
-  def set_description
-    ''
-  end
-
-  def set_url
-    "https://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.thread_id || @rank.channel_id}/#{@rank.message_id}"
   end
 
   def set_icon_url
