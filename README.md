@@ -102,14 +102,10 @@ $ bundle exec rspec
 
 - 毎日定時に、前日のランキング第 1 位を Discord でお知らせします。
 
-![image](https://user-images.githubusercontent.com/82434093/173498917-f14cb58b-0240-409c-ad9a-c4b5c1e3ebdc.png)
+<img src="https://user-images.githubusercontent.com/82434093/173498917-f14cb58b-0240-409c-ad9a-c4b5c1e3ebdc.png" width="50%">
 
 - Web サイトにログインすると前日のランキング第 1 位〜5 位がチェックできます。
 
-  - (ログイン前)
+左:ログイン前、右:ログイン後
 
-![wスクリーンショット 2022-06-14 14 23 44](https://user-images.githubusercontent.com/82434093/173517049-4396f4f7-0bdf-4c8b-9dfc-756ddcb4a69b.png)
-
-- (ログイン後)
-
-![スクリーンショット 2022-06-14 13 16 19](https://user-images.githubusercontent.com/82434093/173499071-d19f680c-babc-4f5b-9edf-ec4d6b06074c.png)
+![スクリーンショット 2022-06-14 16 58 11](https://user-images.githubusercontent.com/82434093/173525062-18704182-32d6-471a-b101-8aa9a7ae9d0c.png)
