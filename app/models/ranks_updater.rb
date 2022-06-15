@@ -14,8 +14,8 @@ class RanksUpdater
   def create_ranks
     RankOrderMaker.new.each_ranked_message do |message, index|
       rank_record = create_record(message, index)
-      EmojisUpdater.new.create_emojis(message, rank_record)
-      AttachmentsUpdater.new.create_attachments(message, rank_record)
+      emojis_update(message, rank_record)
+      attachments_update(message, rank_record)
     end
   end
 
@@ -69,5 +69,36 @@ class RanksUpdater
     avatar_id = message['author']['avatar']
     discriminator = message['author']['discriminator']
     avatar_id ? Discordrb::API::User.avatar_url(uid, avatar_id) : Discordrb::API::User.default_avatar(discriminator)
+  end
+
+  def emojis_update(message, rank_record)
+    return if message[1].zero?
+
+    emoji_hash = yesterday_emojis(message)
+    emoji_hash.each do |hash_emoji|
+      rank_record.emojis.create do |emoji|
+        emoji.emoji_id = hash_emoji[0][1]
+        emoji.emoji_name = hash_emoji[0][0]
+        emoji.count = hash_emoji[1]
+      end
+    end
+  end
+
+  def yesterday_emojis(message)
+    Reaction
+      .where(reacted_at: Time.zone.yesterday.all_day, message_id: message[0][1])
+      .order('sum_point desc').group('emoji_name', 'emoji_id').sum(:point)
+  end
+
+  def attachments_update(message, rank_record)
+    message_info = JSON.parse(Discordrb::API::Channel.message("Bot #{ENV['DISCORD_BOT_TOKEN']}", message[0][0], message[0][1]))
+    return if message_info.blank?
+
+    message_info['attachments'].each do |hash_attachment|
+      rank_record.attachments.create do |attachment|
+        attachment.attachment_id = hash_attachment['id']
+        attachment.attachment_filename = hash_attachment['filename']
+      end
+    end
   end
 end
