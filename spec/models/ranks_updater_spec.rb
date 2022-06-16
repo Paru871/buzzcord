@@ -3,6 +3,20 @@
 require 'rails_helper'
 
 RSpec.describe RanksUpdater, type: :model do
+  describe '#delete_all' do
+    context 'Rankのレコードを全削除するとき' do
+      it 'RankレコードとともにEmojiとAttachmentレコードも削除される確認' do
+        rank = create(:rank)
+        create(:emoji, rank_id: rank.id)
+        create(:attachment, rank_id: rank.id)
+        expect { Rank.delete_all }
+          .to change { Rank.count }.from(1).to(0)
+          .and change { Emoji.count }.from(1).to(0)
+          .and change { Attachment.count }.from(1).to(0)
+      end
+    end
+  end
+
   describe '#convert_custom_emoji' do
     context '投稿文にカスタム絵文字があれば区切る' do
       regexp = /(<:[a-z]+:[0-9]+>)/

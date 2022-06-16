@@ -14,8 +14,10 @@ class RanksUpdater
   def create_ranks
     RankOrderMaker.new.each_ranked_message do |message, index|
       rank_record = create_record(message, index)
-      emojis_update(message, rank_record)
-      attachments_update(message, rank_record)
+      # emojis_update(message, rank_record)
+      # attachments_update(message, rank_record)
+      EmojisUpdater.new.create_emojis(message, rank_record)
+      AttachmentsUpdater.new.create_attachments(message_info, rank_record)
     end
   end
 
