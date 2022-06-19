@@ -2,7 +2,7 @@
 
 module SignInHelper
   def sign_in_as(user)
-    visit homes_path
+    visit welcome_path
     OmniAuth.config.mock_auth[:discord] = nil
     Rails.application.env_config['omniauth.auth'] = discord_mock(user.name, user.uid)
     stub_request(:get, "#{Discordrb::API.api_base}/guilds/#{ENV['DISCORD_SERVER_ID']}").to_return(body: { "name": 'ABC' }.to_json, status: 200)

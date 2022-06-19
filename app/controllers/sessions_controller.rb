@@ -12,11 +12,11 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    redirect_to homes_path, notice: 'ログアウトしました。'
+    redirect_to welcome_path, notice: 'ログアウトしました。'
   end
 
   def failure
-    redirect_to homes_path, notice: 'ログインできませんでした。'
+    redirect_to welcome_path, notice: 'ログインできませんでした。'
   end
 
   private

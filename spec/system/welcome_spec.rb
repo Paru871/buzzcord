@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Homes', type: :system do
+RSpec.describe 'Welcome', type: :system do
   before do
     stub_request(:get, "#{Discordrb::API.api_base}/guilds/#{ENV['DISCORD_SERVER_ID']}").to_return(body: { "name": 'ABC' }.to_json, status: 200)
   end
