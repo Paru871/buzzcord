@@ -1,6 +1,6 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
-// body { background-color: #f8f8f8; }
+body { background-color: #c5dfea; }
 
 .bg-mythemea {
   background-color: #f0faff !important;
@@ -28,4 +28,10 @@
 }
 .border-mythemec {
   border-color: #91d0ed !important;
+}
+.text-red1 {
+  color: #f2576c !important;
+}
+.btnx-new {
+  background: #f5778b; border: 2px solid #f2576c; 
 }
