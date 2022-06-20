@@ -21,13 +21,13 @@ RSpec.describe 'Homes', type: :system do
     click_on 'ログアウト'
 
     expect(page).to have_content 'ログアウトしました。'
-    expect(page).to have_content 'Discordサーバー内で昨日バズった発言のランキングをチェック！'
+    expect(page).to have_content 'Buzzcordは昨日Discordのサーバーでバズった発言をDiscord botが自動で集計・紹介。昨日みんなが絵文字スタンプで多く反応した発言を簡単に知れます。'
   end
 
   it 'ログインしていないユーザが / ページを表示' do
     visit root_path
 
-    expect(page).to have_content 'Discordサーバー内で昨日バズった発言のランキングをチェック！'
+    expect(page).to have_content 'Buzzcordは昨日Discordのサーバーでバズった発言をDiscord botが自動で集計・紹介。昨日みんなが絵文字スタンプで多く反応した発言を簡単に知れます。'
   end
 
   it 'ログインしているユーザが / ページを表示' do
