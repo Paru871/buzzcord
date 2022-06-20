@@ -56,8 +56,8 @@ class RanksUpdater
   end
 
   def convert_custom_emoji(content)
-    regexp = /(<:[a-z]+:[0-9]+>)/
-    regexp2 = /<(:[a-z]+:)([0-9]+)>/
+    regexp = /(<:[0-9a-zA-Z]+:[0-9]+>)/
+    regexp2 = /<(:[0-9a-zA-Z]+:)([0-9]+)>/
     content.split(regexp).map do |word|
       matched = word.match(regexp2)
       matched ? [matched[1], matched[2]] : word
