@@ -1,28 +1,36 @@
 .homes
   .text-center.text-mythemee
-    / h1.lead.pt-5.fs-3.fw-bold
-    /   | Discordサーバー内で昨日バズった発言のランキングをチェック！
     p.my-4
-      = image_tag('buzzcordr.svg', size: '200x200', alt: 'buzzcord', class: 'rounded')
+      = image_tag('buzzcordr.svg', alt: 'buzzcord', class: 'logo')
     h1.display-4.fw-bold.lead.mb-4
       | Buzzcord
     p.display-6.fw-bold.text-red1
       | Discordサーバー内で
       br
       |昨日バズった発言をチェック！
-    p.fs-6
-      | Buzzcordは昨日Discordのサーバーでバズった発言をDiscord botが自動で集計・紹介。昨日みんなが絵文字スタンプで多く反応した発言を簡単に知れます。
-
+    p.fs-6.text-start
+      | Buzzcordは昨日Discordのサーバーでバズった発言をDiscord botが自動で集計・紹介。
+      br.d-none.d-sm-block
+      | 昨日みんなが絵文字スタンプで多く反応した発言を簡単に知れます。
     .my-5.text-center
-      = button_to '      Discordでログイン      ', '/auth/discord', method: :post, class: 'btn btn-secondary btnx-new btn-lg rounded'
-
-    .container.px-4.text-center.fs-9
-      .row.gx-4.justify-content-between
-        .col-sm.p-2.bg-white.m-1
-          | 毎日決まった時間に前日のランキング第1位をDiscordでお知らせ。
-          br
-          = image_tag '/post_buzzcord_to_discord2.png', width: '90%'
-        .col-sm.p-2.bg-white.m-1
-          | このサイトにログインすると前日のランキング第1位〜5位がチェックできます。
-          br
-          = image_tag '/buzzcord_site3.png', width: '90%'
+      = button_to '      Discordでログイン      ', '/auth/discord', method: :post, class: 'btn btn-danger btnx-new btn-lg rounded'
+    .row.gx-4.justify-content-between.mb-4
+      .col-sm.mb-2
+        .py-2.bg-white
+          h2.text-center.fs-6
+            | 毎日決まった時間に
+            br
+            | 前日のランキング第1位を
+            br
+            | Discordでお知らせ。
+          = image_tag '/post_buzzcord_to_discord2.png', class: 'colsm center-block'
+      .col-sm
+        .py-2.bg-white
+          h2.text-center.fs-6
+            | このサイトにログインすると
+            br
+            | 前日のランキング第1位〜5位が
+            br
+            | チェックできます。
+          .colsm
+          = image_tag '/buzzcord_site3.png', class: 'colsm center-block'
