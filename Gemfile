@@ -55,9 +55,7 @@ group :development do
   gem 'spring'
 
   gem 'bullet'
-  gem 'net-imap', require: false
-  gem 'net-pop', require: false
-  gem 'net-smtp', require: false
+  gem 'html2slim'
   gem 'rubocop', require: false
   gem 'rubocop-fjord', require: false
   gem 'rubocop-performance', require: false
@@ -69,7 +67,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'discordrb', github: 'shardlab/discordrb', branch: 'threads'
 gem 'dotenv-rails'
-gem 'html2slim'
+gem 'net-imap', require: false
+gem 'net-pop', require: false
+gem 'net-smtp'
 gem 'omniauth'
 gem 'omniauth-discord'
 gem 'omniauth-rails_csrf_protection'
