@@ -26,11 +26,19 @@
               -else
                 = ']'
             h5.card-text.text-break.mt-2
+              - contents_all = ''
               - rank.content.each do |word|
                 - if word.instance_of?(Array)
-                  img.emoji alt="#{word[0]}" aria-label="#{word[0]}" data-id="#{word[1]}" data-type="emoji" draggable="false" src="https://cdn.discordapp.com/emojis/#{word[1]}.webp?size=32&quality=lossless"
+                  - contents_all += "<img alt='#{word[0]}' aria-label='#{word[0]}' class='emoji' data-id='#{word[1]}' data-type='emoji' draggable='false' src='https://cdn.discordapp.com/emojis/#{word[1]}.webp?size=32&amp;quality=lossless'>"
                 - else
-                  = simple_format(word)
+                  - contents_all += word
+              = simple_format(contents_all)
+              / = contents_all
+              / - rank.content.each do |word|
+              /   - if word.instance_of?(Array)
+              /     img.emoji alt="#{word[0]}" aria-label="#{word[0]}" data-id="#{word[1]}" data-type="emoji" draggable="false" src="https://cdn.discordapp.com/emojis/#{word[1]}.webp?size=32&quality=lossless"
+              /   - else
+              /     = simple_format(word)
               br
               - rank.attachments.each do |attachment|
                 img.img-fluid.w-25.align-top src="https://cdn.discordapp.com/attachments/#{rank.thread_id || rank.channel_id}/#{attachment.attachment_id}/#{attachment.attachment_filename}" class="mb-3"
