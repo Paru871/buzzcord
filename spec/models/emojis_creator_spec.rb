@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe EmojisUpdater, type: :model do
-  context '#emojis_update' do
+RSpec.describe EmojisCreator, type: :model do
+  context '#create_emojis' do
     before do
       create_list(:reaction, 10)
       create_list(:reaction, 10, emoji_name: 'blob_cheer')
@@ -12,7 +12,7 @@ RSpec.describe EmojisUpdater, type: :model do
       rank_record = create(:rank)
       message = [[1_234_567, 11_111], 20]
       expect(Emoji.count).to eq 0
-      EmojisUpdater.new.create_emojis(message, rank_record)
+      EmojisCreator.new.create_emojis(message, rank_record)
       expect(Emoji.count).to eq 2
     end
   end

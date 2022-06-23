@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class RanksUpdater
-  def update_all
+class RanksCreator
+  def create_all
     # 現在のランキング情報をリセット
     Rank.delete_all
 
@@ -14,8 +14,8 @@ class RanksUpdater
   def create_ranks
     RankOrderMaker.new.each_ranked_message do |message, index|
       rank_record = create_record(message, index)
-      EmojisUpdater.new.create_emojis(message, rank_record)
-      AttachmentsUpdater.new.create_attachments(message, rank_record)
+      EmojisCreator.new.create_emojis(message, rank_record)
+      AttachmentsCreator.new.create_attachments(message, rank_record)
     end
   end
 

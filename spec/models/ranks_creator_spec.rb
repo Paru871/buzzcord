@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe RanksUpdater, type: :model do
+RSpec.describe RanksCreator, type: :model do
   describe '#delete_all' do
     context 'Rankのレコードを全削除するとき' do
       it 'RankレコードとともにEmojiとAttachmentレコードも削除される確認' do

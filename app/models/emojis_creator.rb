@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EmojisUpdater
+class EmojisCreator
   def create_emojis(message, rank_record)
     return if message[1].zero?
 
