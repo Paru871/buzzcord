@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class HomesController < ApplicationController
+class WelcomeController < ApplicationController
   skip_before_action :login_required
 
-  def top; end
+  def index; end
 end
