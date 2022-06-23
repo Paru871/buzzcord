@@ -8,7 +8,10 @@ html
     = csp_meta_tag
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    script src="https://kit.fontawesome.com/ee5a02ffb8.js" crossorigin="anonymous"
+    = favicon_link_tag '/favicon.ico'
+    = favicon_link_tag '/apple-touch-icon.png', rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png'
+    = favicon_link_tag '/android-chrome-256x256.png', rel: 'icon', sizes: '256x256', type: 'image/png'
+    link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" /
   body
     .container
       - if flash.notice
@@ -20,13 +23,13 @@ html
       .container
         .py-2
           .row.d-flex.align-items-center
-            .col-md-7.col-lg-8.text-center.text-md-start
+            .col-md-7.col-lg-8.text-md-start
               small
                 | © 2022 Paru871
-            .col-md-5.col-lg-4.ml-lg-0.text-center.text-md-end
+            .col-md-5.col-lg-4.ml-lg-0.text-md-end
               /! Twitter
               a.btn.btn-outline-light.btn-floating.m-1 href="https://twitter.com/Paru871" role="button"
-                i.fab.fa-twitter
+                i.bi.bi-twitter
               /! Github
               a.btn.btn-outline-light.btn-floating.m-1 href="https://github.com/Paru871/buzzcord/" role="button"
-                i.fab.fa-github
+                i.bi.bi-github
