@@ -9,7 +9,7 @@ RSpec.describe AttachmentsCreator, type: :model do
       message = [[1_234_567, 11_111], 20]
       regist_stub(message)
       expect(Attachment.count).to eq 0
-      AttachmentsCreator.new.create_attachments(message, rank_record)
+      AttachmentsCreator.call(message, rank_record)
       expect(Attachment.count).to eq 1
     end
   end

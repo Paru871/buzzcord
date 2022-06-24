@@ -12,7 +12,7 @@ RSpec.describe EmojisCreator, type: :model do
       rank_record = create(:rank)
       message = [[1_234_567, 11_111], 20]
       expect(Emoji.count).to eq 0
-      EmojisCreator.new.create_emojis(message, rank_record)
+      EmojisCreator.call(message, rank_record)
       expect(Emoji.count).to eq 2
     end
   end

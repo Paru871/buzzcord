@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AttachmentsCreator
-  def create_attachments(message, rank_record)
+  def self.call(message, rank_record)
     message_info = JSON.parse(Discordrb::API::Channel.message("Bot #{ENV['DISCORD_BOT_TOKEN']}", message[0][0], message[0][1]))
     return if message_info.blank?
 
