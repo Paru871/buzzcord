@@ -3,12 +3,12 @@
     | サーバー名: #{@guild_name}
   - if @ranks.empty?
     h1.mb-4.text-center
-      | #{Time.zone.yesterday.strftime('%Y/%m/%d')}のBuzzcordランキング一覧
+      | #{l(Time.zone.yesterday, format: :short)}のBuzzcordランキング一覧
     h4
       | 昨日は絵文字スタンプのリアクションがありませんでした。
   - else
     h1.my-3.text-center
-      | #{@ranks.first.created_at.ago(1.day).strftime('%Y/%m/%d')}のBuzzcordランキング一覧
+      | #{l(@ranks.first.created_at.ago(1.day), format: :short)}のBuzzcordランキング一覧
     .card-deck
       - @ranks.each do |rank|
         .card.content-card.bg-mythemea.mb-3.bg-body.text-center
