@@ -19,5 +19,5 @@ ja:
   time:
     formats:
       default: "%Y年%m月%d日(%a) %H:%M"
-      short: "%Y/%m/%d %H:%M"
+      short: "%Y/%m/%d"
       time_only: "%H:%M"
