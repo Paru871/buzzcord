@@ -17,7 +17,7 @@ RSpec.describe 'Ranks', type: :system do
     it '表示件数の確認' do
       sign_in_as(user)
 
-      expect(page).to have_content 'のBuzzcordランキング一覧'
+      expect(page).to have_content 'のBuzzcordランキング'
       expect(page).to have_content('Rank:', count: 5)
     end
 
