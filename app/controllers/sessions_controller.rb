@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    redirect_to welcome_path, notice: 'ログインできませんでした。'
+    redirect_to welcome_path, alert: 'ログインできませんでした。'
   end
 
   private

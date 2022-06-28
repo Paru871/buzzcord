@@ -1,35 +1,34 @@
-.welcome
-  p.my-4
-    = image_tag('buzzcordr.svg', alt: 'buzzcord', class: 'logo d-block mx-auto')
-  h1.display-4.fw-bold.lead.mb-4.text-center.text-mythemee
+.welcome.pt-4
+  p.mb-3
+    = image_tag('buzzcordr.png', alt: 'buzzcord', class: 'logo d-block mx-auto')
+  h1.display-6.fw-bold.lead.mb-4.text-center.text-mythemee
     | Buzzcord
-  p.display-6.fw-bold.text-red1.text-center
+  p.display-5.fw-bold.text-red1.text-center
     | Discordサーバー内で
     br
-    |昨日バズった発言をチェック！
-  p.fs-6.text-start.text-mythemee
+    | 昨日バズった発言をチェック！
+  p.fs-6.text-md-center.text-mythemee
     | Buzzcordは昨日Discordのサーバーでバズった発言をDiscord botが自動で集計・紹介。
     br.d-none.d-sm-block
     | 昨日みんなが絵文字スタンプで多く反応した発言を簡単に知れます。
   .my-5.text-center
-    = button_to '      Discordでログイン      ', '/auth/discord', method: :post, class: 'btn btn-danger btnx-new btn-lg rounded'
+    = button_to 'Discordでログイン', '/auth/discord', method: :post, class: 'btn btnx-new btn-lg rounded'
   .row.gx-4.justify-content-between.mb-4
     .col-sm.mb-2
-      .py-2.bg-white
-        h2.text-center.fs-6
+      .p-4.bg-white.rounded
+        h2.text-center.fs-6.mb-3
           | 毎日決まった時間に
           br
           | 前日のランキング第1位を
           br
           | Discordでお知らせ。
-        = image_tag '/post_buzzcord_to_discord2.png', class: 'colsm d-block mx-auto'
+        = image_tag '/post_buzzcord_to_discord2.png', class: 'd-block rounded'
     .col-sm
-      .py-2.bg-white
-        h2.text-center.fs-6
+      .p-4.bg-white.rounded
+        h2.text-center.fs-6.mb-3
           | このサイトにログインすると
           br
           | 前日のランキング第1位〜5位が
           br
           | チェックできます。
-        .colsm
-        = image_tag '/buzzcord_site3.png', class: 'colsm d-block mx-auto'
+        = image_tag '/buzzcord_site3.png', class: 'd-block rounded'

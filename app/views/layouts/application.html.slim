@@ -20,16 +20,18 @@ html
         .col-md-0.text-end
           .text-white
             = current_user.name
-            = image_tag current_user.avatar, class: 'rounded-circle ms-3 avatar'
+            = image_tag current_user.avatar, class: 'rounded-circle ms-3 avatar-header'
     .container
       - if flash.notice
-        .flash-message.notice.alert.alert-danger = notice
+        .flash-message.notice.alert.alert-success
+          = notice
       - if flash.alert
-        .flash-message.alert.alert.alert-warning = alert
+        .flash-message.alert.alert.alert-denger
+          = alert
       = yield
     footer.text-center.text-lg-start.text-white style='background-color: #3f4678'
       .container
-        .py-4
+        .py-2
           .row.d-flex.align-items-center
             .col-md-7.text-md-start
               small

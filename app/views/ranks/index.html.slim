@@ -1,21 +1,28 @@
 .ranks
-  h3.mt-4.text-center
-    | サーバー名: #{@guild_name}
   - if @ranks.empty?
-    h2.text-center.bg-mythemec.my-4.py-3.rounded-pill.
+    h2.text-center.mb-4.py-3.rounded.text-gray.container-fluid.bg-white
       | #{l(Time.zone.yesterday, format: :short)}のBuzzcordランキング
     h4
       | 昨日は絵文字スタンプのリアクションがありませんでした。
   - else
-    h2.text-center.bg-mythemec.my-4.py-3.rounded
+    h2.text-center.mb-4.py-3.rounded.text-gray.container-fluid.bg-white
       | #{l(@ranks.first.created_at.ago(1.day), format: :short)}のBuzzcordランキング
-    .card-deck
+    h3.mt-4.text-center
+      | サーバー: #{@guild_name}
+    .card-deck.text-gray.rounded
       - @ranks.each do |rank|
-        .card.content-card.bg-mythemea.mb-3.bg-body.text-center
-          .card-header.fs-3.fw-bold.bg-mythemeb
-            | Rank:
-            = rank.order
-          .card-body.text-start
+        .card.content-card.mb-3
+          .card-header.fs-3.fw-bold.bg-white.text-start
+            .rank.float-start.ms-5
+              = image_tag("/crown_#{rank.order}.png", class: 'position-absolute top-0 start-0 crown')
+              | 第
+              = rank.order
+              | 位
+            .count.text-end
+              | 絵文字
+              = rank.total_emojis_count
+              | 個
+          .card-body.text-start.bg-white
             h5.card-title
               img src="#{rank.author_avatar}" class="avatar me-3"
               = rank.author_name
@@ -38,8 +45,7 @@
                 - else
                   = emoji.emoji_name
                 = emoji.count
-                = '  '
-          .card-footer.text-start.d-flex.align-items-center
+          .card-footer.text-start.d-flex.align-items-center.bg-white
             = "投稿日: #{l rank.posted_at, format: :short}"
             a.btn.ms-3 href="discord://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.thread_id || rank.channel_id}/#{rank.message_id}" alt='Discordアプリで開く' role="button"
               i.bi.bi-discord
