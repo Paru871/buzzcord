@@ -1,14 +1,14 @@
 .ranks
-  h2.bg-mythemec.my-4.py-3.rounded-pill.text-center
+  h3.mt-4.text-center
     | サーバー名: #{@guild_name}
   - if @ranks.empty?
-    h1.mb-4.text-center
-      | #{l(Time.zone.yesterday, format: :short)}のBuzzcordランキング一覧
+    h2.text-center.bg-mythemec.my-4.py-3.rounded-pill.
+      | #{l(Time.zone.yesterday, format: :short)}のBuzzcordランキング
     h4
       | 昨日は絵文字スタンプのリアクションがありませんでした。
   - else
-    h1.my-3.text-center
-      | #{l(@ranks.first.created_at.ago(1.day), format: :short)}のBuzzcordランキング一覧
+    h2.text-center.bg-mythemec.my-4.py-3.rounded
+      | #{l(@ranks.first.created_at.ago(1.day), format: :short)}のBuzzcordランキング
     .card-deck
       - @ranks.each do |rank|
         .card.content-card.bg-mythemea.mb-3.bg-body.text-center

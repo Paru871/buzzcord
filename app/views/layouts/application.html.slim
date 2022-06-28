@@ -13,14 +13,14 @@ html
     = favicon_link_tag '/android-chrome-256x256.png', rel: 'icon', sizes: '256x256', type: 'image/png'
     link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" /
   body
-    .app-title.navbar.navbar-expand-md.navbar-light.bg-mythemee.px-3
-      .container-fluid
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-mythemee
+      .container
         .navbar-brand
           = image_tag('buzzcordr.svg', alt: 'buzzcord', class: 'logo-header')
         .col-md-0.text-end
           .text-white
             = current_user.name
-            = image_tag current_user.avatar, class: 'rounded-circle mx-3 avatar'
+            = image_tag current_user.avatar, class: 'rounded-circle ms-3 avatar'
     .container
       - if flash.notice
         .flash-message.notice.alert.alert-danger = notice
