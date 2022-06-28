@@ -15,9 +15,11 @@ html
   body
     .container
       - if flash.notice
-        .flash-message.notice.alert.alert-danger = notice
+        .flash-message.notice.alert.alert-success
+          = notice
       - if flash.alert
-        .flash-message.alert.alert.alert-warning = alert
+        .flash-message.alert.alert.alert-warning
+          = alert
       = yield
     footer.text-center.text-lg-start.text-white style='background-color: #3f4678'
       .container
