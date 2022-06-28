@@ -2,25 +2,7 @@
 
 class RanksCreator
   class << self
-    def create_all
-      # 現在のランキング情報をリセット
-      Rank.delete_all
-
-      # 発言ごとに昨日ついた絵文字合計で降順に並べ替え、そこからランキング情報を再作成する
-      create_ranks
-    end
-
-    private
-
-    def create_ranks
-      RankOrderMaker.new.each_ranked_message do |message, index|
-        rank_record = create_record(message, index)
-        EmojisCreator.call(message, rank_record)
-        AttachmentsCreator.call(message, rank_record)
-      end
-    end
-
-    def create_record(message, index)
+    def call(message, index)
       channel_array = make_channel_array(message)
       message_all_info = message_info(message)
       Rank.create do |rank|
@@ -40,6 +22,8 @@ class RanksCreator
         rank.total_emojis_count = message[1]
       end
     end
+
+    private
 
     def make_channel_array(message)
       channel = message[0][0]

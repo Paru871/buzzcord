@@ -3,7 +3,7 @@
 namespace :ranks do
   desc 'create ranking information'
   task create: :environment do
-    RanksCreator.create_all
+    AllRankingDataCreator.call
   end
 
   desc 'post buzzcord to discord channel'
