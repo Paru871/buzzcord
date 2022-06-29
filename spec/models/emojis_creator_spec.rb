@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe EmojisCreator, type: :model do
-  context '#create_emojis' do
+  context '#call' do
     before do
       create_list(:reaction, 10)
       create_list(:reaction, 10, emoji_name: 'blob_cheer')

@@ -15,9 +15,5 @@ RSpec.describe RanksCreator, type: :model do
           .and change { Attachment.count }.from(1).to(0)
       end
     end
-    context 'create all  ranking data' do
-      it 'Reactionデータを集計し、新しいテーブル3つにレコードを保存する' do
-      end
-    end
   end
 end

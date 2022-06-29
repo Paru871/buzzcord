@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe AttachmentsCreator, type: :model do
-  context '#create_attachments' do
+  context '#call' do
     it '正確な数のAttachmentsレコードが作成される' do
       rank_record = create(:rank)
       message = [[1_234_567, 11_111], 20]
