@@ -3,7 +3,7 @@
 class RanksCreator
   class << self
     def call(message, index)
-      channel_array = make_channel_array(message)
+      channel_array = ChannelArrayMaker.call(message)
       message_all_info = message_info(message)
       Rank.create do |rank|
         rank.order = index
@@ -24,17 +24,6 @@ class RanksCreator
     end
 
     private
-
-    def make_channel_array(message)
-      channel = message[0][0]
-      parsed = JSON.parse(DiscordApiClient.new.fetch_channel_info(channel))
-      if parsed.key?('thread_metadata')
-        [channel, parsed['name'], parsed['parent_id'],
-         (JSON.parse(DiscordApiClient.new.fetch_channel_info(parsed['parent_id'])))['name']]
-      else
-        [nil, nil, channel, parsed['name']]
-      end
-    end
 
     def message_info(message)
       JSON.parse(DiscordApiClient.new.fetch_message_info(message))

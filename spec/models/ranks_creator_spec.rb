@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe RanksCreator, type: :model do
   describe '#call' do
-    context 'Rankレコードが正確に作成される' do
+    context 'Rankレコードが作成される' do
       it 'Rankレコードが1件作成される' do
         message = [[1_234_567, 11_111], 20]
         index = 1

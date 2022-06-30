@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Welcome', type: :system do
-
   let(:user) { create(:user) }
 
   it 'ユーザがログインできる' do
