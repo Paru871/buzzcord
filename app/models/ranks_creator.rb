@@ -27,17 +27,17 @@ class RanksCreator
 
     def make_channel_array(message)
       channel = message[0][0]
-      parsed = JSON.parse(Discordrb::API::Channel.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", channel))
+      parsed = JSON.parse(DiscordApiClient.new.fetch_channel_info(channel))
       if parsed.key?('thread_metadata')
         [channel, parsed['name'], parsed['parent_id'],
-         (JSON.parse(Discordrb::API::Channel.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", parsed['parent_id'])))['name']]
+         (JSON.parse(DiscordApiClient.new.fetch_channel_info(parsed['parent_id'])))['name']]
       else
         [nil, nil, channel, parsed['name']]
       end
     end
 
     def message_info(message)
-      JSON.parse(Discordrb::API::Channel.message("Bot #{ENV['DISCORD_BOT_TOKEN']}", message[0][0], message[0][1]))
+      JSON.parse(DiscordApiClient.new.fetch_message_info(message))
     end
 
   def convert_custom_emoji(content)
@@ -59,7 +59,7 @@ class RanksCreator
       uid = message['author']['id']
       avatar_id = message['author']['avatar']
       discriminator = message['author']['discriminator']
-      avatar_id ? Discordrb::API::User.avatar_url(uid, avatar_id) : Discordrb::API::User.default_avatar(discriminator)
+      avatar_id ? DiscordApiClient.new.make_avatar_url(uid, avatar_id) : DiscordApiClient.new.make_default_avatar(discriminator)
     end
   end
 end

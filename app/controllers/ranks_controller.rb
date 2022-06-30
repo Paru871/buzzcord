@@ -3,6 +3,5 @@
 class RanksController < ApplicationController
   def index
     @ranks = Rank.includes(%i[emojis attachments])
-    @guild_name = GUILD_NAME
   end
 end

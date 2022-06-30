@@ -2,7 +2,7 @@
 
 class AttachmentsCreator
   def self.call(message, rank_record)
-    message_info = JSON.parse(Discordrb::API::Channel.message("Bot #{ENV['DISCORD_BOT_TOKEN']}", message[0][0], message[0][1]))
+    message_info = JSON.parse(DiscordApiClient.new.fetch_message_info(message))
     return if message_info.blank?
 
     message_info['attachments'].each do |hash_attachment|

@@ -7,7 +7,7 @@ class DiscordApiClient
     @server_id = ENV['DISCORD_SERVER_ID']
   end
 
-  def bot_start(message)
+  def fetch_message_info(message)
     Discordrb::API::Channel.message("Bot #{@token}", message[0][0], message[0][1])
   end
 

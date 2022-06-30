@@ -38,7 +38,7 @@ class DiscordBot
 
     @bot.member_update do |event|
       uid = event.user.id
-      updated_member = JSON.parse(Discordrb::API::User.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", uid))
+      updated_member = JSON.parse(DiscordApiClient.new.fetch_user_info(uid))
 
       name = updated_member['username']
       discriminator = updated_member['discriminator']
@@ -67,9 +67,9 @@ class DiscordBot
 
   def make_avatar_url(uid, avatar_id, discriminator)
     if avatar_id
-      Discordrb::API::User.avatar_url(uid, avatar_id)
+      DiscordApiClient.new.make_avatar_url(uid, avatar_id)
     else
-      Discordrb::API::User.default_avatar(discriminator)
+      DiscordApiClient.new.make_default_avatar(discriminator)
     end
   end
 end

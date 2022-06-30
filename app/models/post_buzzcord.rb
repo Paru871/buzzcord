@@ -2,6 +2,6 @@
 
 class PostBuzzcord
   def self.post(formatter)
-    Discordrb::API::Channel.create_message("Bot #{ENV['DISCORD_BOT_TOKEN']}", ENV['DISCORD_CHANNEL_ID'], formatter.header, false, formatter.embed_message)
+    DiscordApiClient.new.create_post(formatter.header, formatter.embed_message)
   end
 end

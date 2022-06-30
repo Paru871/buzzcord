@@ -33,7 +33,7 @@ RSpec.describe DiscordBot, type: :model do
       end
 
       it '情報変更に合わせてUserレコード更新' do
-        updated_member = JSON.parse(Discordrb::API::User.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", uid))
+        updated_member = JSON.parse(DiscordApiClient.new.fetch_user_info(uid))
 
         name = updated_member['username']
         discriminator = updated_member['discriminator']
