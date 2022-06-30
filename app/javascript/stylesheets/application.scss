@@ -75,26 +75,59 @@ body {
   max-width: 320px;
 }
 
-img.logo {
+.logo {
   width: 200px;
+  @include media-breakpoint-down(md) {
+    width: 160px;
+  }
+  @include media-breakpoint-down(sm) {
+    width: 120px;
+  }
 }
 
-img.logo-header {
+.logo-header {
   width: 40px;
 }
 
-img.avatar-header {
+.avatar-header {
   width: 40px;
 }
 
-img.avatar {
+.avatar {
   width: 70px;
 }
 
-img.pc {
+.pc {
   width: 24px;
 }
 
-img.crown {
+.crown {
   width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, 0);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 12px;
+  border-radius: 50%;
+  &.is-rank-1{
+    background-color: #bdb71c;
+  }
+
+}
+
+.flash-message {
+  position: absolute;
+  width: 100%;
+  top: 32px;
+  pointer-events: none;
+}
+
+.rank-text {
+  p {
+    line-height: 1.8;
+  }
 }

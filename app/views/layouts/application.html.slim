@@ -22,13 +22,14 @@ html
             = current_user.name
             = image_tag current_user.avatar, class: 'rounded-circle ms-3 avatar-header'
     .container
-      - if flash.notice
-        .flash-message.notice.alert.alert-success
-          = notice
-      - if flash.alert
-        .flash-message.alert.alert.alert-denger
-          = alert
-      = yield
+      .position-relative
+        - if flash.notice
+          .flash-message.notice.alert.alert-success
+            = notice
+        - if flash.alert
+          .flash-message.alert.alert.alert-denger
+            = alert
+    = yield
     footer.text-center.text-lg-start.text-white style='background-color: #3f4678'
       .container
         .py-2

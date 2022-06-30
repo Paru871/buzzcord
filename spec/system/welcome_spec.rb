@@ -13,7 +13,7 @@ RSpec.describe 'Welcome', type: :system do
     sign_in_as(user)
 
     expect(page).to have_content 'ログインしました。'
-    expect(page).to have_content 'のBuzzcordランキング'
+    expect(page).to have_content 'のランキング'
   end
 
   it 'ログインしているユーザがログアウトできる' do
@@ -34,6 +34,6 @@ RSpec.describe 'Welcome', type: :system do
     sign_in_as(user)
     visit root_path
 
-    expect(page).to have_content 'のBuzzcordランキング'
+    expect(page).to have_content 'のランキング'
   end
 end
