@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe AttachmentsCreator, type: :model do
+RSpec.describe ChannelArrayMaker, type: :model do
   describe '#call' do
     context 'スレッド内の投稿のとき' do
       before do

@@ -16,7 +16,7 @@ class User < ApplicationRecord
     User.find_or_create_by!(provider: provider, uid: uid) do |user|
       user.name = name
       user.avatar = if avatar
-                      DiscordApiClient.new.make_avatar_url(uid, avatar_id)
+                      DiscordApiClient.new.make_avatar_url(uid, avatar)
                     else
                       DiscordApiClient.new.make_default_avatar(discriminator)
                     end
