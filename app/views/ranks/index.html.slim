@@ -34,8 +34,7 @@
                       -else
                         = ']'
                     .rank-text.card-text.text-break.mt-2
-                      - contents_all = make_contents_all(rank.content)
-                      = simple_format(contents_all)
+                      = simple_format(rank.content)
                       br
                       - rank.attachments.each do |attachment|
                         img.img-fluid.w-25.align-top src="https://cdn.discordapp.com/attachments/#{rank.thread_id || rank.channel_id}/#{attachment.attachment_id}/#{attachment.attachment_filename}" class="mb-3"
