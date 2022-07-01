@@ -29,20 +29,20 @@ class RanksCreator
       JSON.parse(DiscordApiClient.new.fetch_message_info(message))
     end
 
-  def convert_custom_emoji(content)
-    regexp = /(<:[0-9a-zA-Z]+:[0-9]+>)/
-    regexp2 = /<(:[0-9a-zA-Z]+:)([0-9]+)>/
-    contents_all = +''
-    content.split(regexp).map do |word|
-      matched = word.match(regexp2)
-      if matched
-        contents_all += "<img alt='#{matched[1]}' aria-label='#{matched[1]}' class='emoji' data-id='#{matched[2]}' data-type='emoji' draggable='false' src='https://cdn.discordapp.com/emojis/#{matched[2]}.webp?size=32&amp;quality=lossless'>"
-      else
-        contents_all += word
+    def convert_custom_emoji(content)
+      regexp = /(<:[0-9a-zA-Z]+:[0-9]+>)/
+      regexp2 = /<(:[0-9a-zA-Z]+:)([0-9]+)>/
+      contents_all = +''
+      content.split(regexp).map do |word|
+        matched = word.match(regexp2)
+        if matched
+          contents_all += "<img alt='#{matched[1]}' aria-label='#{matched[1]}' class='emoji' data-id='#{matched[2]}' data-type='emoji' draggable='false' src='https://cdn.discordapp.com/emojis/#{matched[2]}.webp?size=32&amp;quality=lossless'>"
+        else
+          contents_all += word
+        end
       end
+      contents_all
     end
-    contents_all
-  end
 
     def avatar_url(message)
       uid = message['author']['id']
