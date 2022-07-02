@@ -42,7 +42,7 @@ class DiscordBot
 
       name = updated_member['username']
       discriminator = updated_member['discriminator']
-      avatar = make_avatar_url(uid, updated_member['avatar'], discriminator)
+      avatar = AvatarUrlMaker.call(uid, updated_member['avatar'], discriminator)
 
       user = User.find_by(uid: uid)
       if user
@@ -62,14 +62,6 @@ class DiscordBot
       reaction.emoji_id = event.emoji.id
       reaction.reacted_at = Time.current
       reaction.point = point
-    end
-  end
-
-  def make_avatar_url(uid, avatar_id, discriminator)
-    if avatar_id
-      DiscordApiClient.new.make_avatar_url(uid, avatar_id)
-    else
-      DiscordApiClient.new.make_default_avatar(discriminator)
     end
   end
 end

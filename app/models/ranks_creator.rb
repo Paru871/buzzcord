@@ -33,7 +33,7 @@ class RanksCreator
       uid = message['author']['id']
       avatar_id = message['author']['avatar']
       discriminator = message['author']['discriminator']
-      avatar_id ? DiscordApiClient.new.make_avatar_url(uid, avatar_id) : DiscordApiClient.new.make_default_avatar(discriminator)
+      AvatarUrlMaker.call(uid, avatar_id, discriminator)
     end
   end
 end
