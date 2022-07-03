@@ -18,7 +18,7 @@ RSpec.describe 'Ranks', type: :system do
       sign_in_as(user)
 
       expect(page).to have_content 'のランキング'
-      expect(page).to have_selector( '.card-title', text: 'Hana', count: 5)
+      expect(page).to have_selector('.card-title', text: 'Hana', count: 5)
     end
 
     it 'ランキングと表示内容の一致の確認' do
