@@ -10,6 +10,8 @@ $accent-color: #f2576c;
 
 $text-gray: #444444;
 
+$text-lightgray: #5d5d5d;
+
 @import "~bootstrap/scss/bootstrap.scss";
 
 img {
@@ -18,7 +20,7 @@ img {
 
 body {
   background-color: #d5ecf8 !important;
-  color: $text-gray;
+  color: $text-lightgray;
 }
 
 .bg-mythemea {
@@ -37,7 +39,7 @@ body {
   background-color: #3f4678 !important;
 }
 .btnx-mythemed {
-  background: #6873d1; border: 2px solid #6873d1; 
+  background: #6873d1; border: 2px solid #6873d1;
 }
 .btn-mythemed {
   background-color: #6873d1 !important;
@@ -109,22 +111,28 @@ body {
   align-items: center;
   transform: translate(-50%, 0);
   position: absolute;
-  top: 0;
+  top: -30px;
   left: 50%;
   padding: 12px;
   border-radius: 50%;
   &.is-rank-1{
     background-color: #bdb71c;
   }
+  &.is-rank-2{
+    background-color: #c9caca;
+  }
+  &.is-rank-3{
+    background-color: #ac6b25;
+  }
 
 }
 
-.flash-message {
-  position: absolute;
-  width: 100%;
-  top: 32px;
-  pointer-events: none;
-}
+// .flash-message {
+//   position: absolute;
+//   width: 100%;
+//   top: 32px;
+//   pointer-events: none;
+// }
 
 .rank-text {
   p {
