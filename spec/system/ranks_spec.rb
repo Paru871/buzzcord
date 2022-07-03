@@ -18,28 +18,28 @@ RSpec.describe 'Ranks', type: :system do
       sign_in_as(user)
 
       expect(page).to have_content 'のランキング'
-      expect(page).to have_content('投稿日', count: 5)
+      expect(page).to have_selector( '.card-title', text: 'Hana', count: 5)
     end
 
     it 'ランキングと表示内容の一致の確認' do
       sign_in_as(user)
-      element = all('.card').find { |component| component.has_text?('第1位') }
+      element = all('.card').find { |component| component.has_text?('1位') }
       within element do
         expect(page).to have_selector '.rank-text.card-text', text: 'テスト投稿です！_1'
       end
-      element = all('.card').find { |component| component.has_text?('第2位') }
+      element = all('.card').find { |component| component.has_text?('2位') }
       within element do
         expect(page).to have_selector '.rank-text.card-text', text: 'テスト投稿です！_2'
       end
-      element = all('.card').find { |component| component.has_text?('第3位') }
+      element = all('.card').find { |component| component.has_text?('3位') }
       within element do
         expect(page).to have_selector '.rank-text.card-text', text: 'テスト投稿です！_3'
       end
-      element = all('.card').find { |component| component.has_text?('第4位') }
+      element = all('.card').find { |component| component.has_text?('4位') }
       within element do
         expect(page).to have_selector '.rank-text.card-text', text: 'テスト投稿です！_4'
       end
-      element = all('.card').find { |component| component.has_text?('第5位') }
+      element = all('.card').find { |component| component.has_text?('5位') }
       within element do
         expect(page).to have_selector '.rank-text.card-text', text: 'テスト投稿です！_5'
       end
