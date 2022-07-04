@@ -38,11 +38,11 @@ class DiscordBot
 
     @bot.member_update do |event|
       uid = event.user.id
-      updated_member = JSON.parse(Discordrb::API::User.resolve("Bot #{ENV['DISCORD_BOT_TOKEN']}", uid))
+      updated_member = JSON.parse(DiscordApiClient.new.fetch_user_info(uid))
 
       name = updated_member['username']
       discriminator = updated_member['discriminator']
-      avatar = make_avatar_url(uid, updated_member['avatar'], discriminator)
+      avatar = AvatarUrlMaker.call(uid, updated_member['avatar'], discriminator)
 
       user = User.find_by(uid: uid)
       if user
@@ -62,14 +62,6 @@ class DiscordBot
       reaction.emoji_id = event.emoji.id
       reaction.reacted_at = Time.current
       reaction.point = point
-    end
-  end
-
-  def make_avatar_url(uid, avatar_id, discriminator)
-    if avatar_id
-      Discordrb::API::User.avatar_url(uid, avatar_id)
-    else
-      Discordrb::API::User.default_avatar(discriminator)
     end
   end
 end

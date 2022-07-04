@@ -5,7 +5,6 @@ module SignInHelper
     visit welcome_path
     OmniAuth.config.mock_auth[:discord] = nil
     Rails.application.env_config['omniauth.auth'] = discord_mock(user.name, user.uid)
-    stub_request(:get, "#{Discordrb::API.api_base}/guilds/#{ENV['DISCORD_SERVER_ID']}").to_return(body: { "name": 'ABC' }.to_json, status: 200)
     stub_request(:get, "#{Discordrb::API.api_base}/guilds/#{ENV['DISCORD_SERVER_ID']}/members/#{user.uid}")
     ensure_browser_size if Capybara.current_driver == :selenium_chrome_headless
     click_on 'Discordでログイン'

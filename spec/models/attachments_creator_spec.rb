@@ -2,14 +2,14 @@
 
 require 'rails_helper'
 
-RSpec.describe AttachmentsUpdater, type: :model do
-  context '#attachments_update' do
+RSpec.describe AttachmentsCreator, type: :model do
+  context '#call' do
     it '正確な数のAttachmentsレコードが作成される' do
       rank_record = create(:rank)
       message = [[1_234_567, 11_111], 20]
       regist_stub(message)
       expect(Attachment.count).to eq 0
-      AttachmentsUpdater.new.create_attachments(message, rank_record)
+      AttachmentsCreator.call(message, rank_record)
       expect(Attachment.count).to eq 1
     end
   end

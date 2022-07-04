@@ -11,15 +11,11 @@ class User < ApplicationRecord
     discriminator = auth_hash[:extra][:raw_info][:discriminator]
 
     # そのサーバーの所属メンバーかどうかを確認する
-    Discordrb::API::Server.resolve_member("Bot #{ENV['DISCORD_BOT_TOKEN']}", ENV['DISCORD_SERVER_ID'], uid)
+    DiscordApiClient.new.fetch_server_member_info(uid)
 
     User.find_or_create_by!(provider: provider, uid: uid) do |user|
       user.name = name
-      user.avatar = if avatar
-                      Discordrb::API::User.avatar_url(uid, avatar)
-                    else
-                      Discordrb::API::User.default_avatar(discriminator)
-                    end
+      user.avatar = AvatarUrlMaker.call(uid, avatar, discriminator)
       user.discriminator = discriminator
     end
   end
