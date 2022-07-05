@@ -4,7 +4,7 @@
   @include media-breakpoint-up(md) {
     padding-top: 3rem;
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     padding-top: 2rem;
   }
 
@@ -21,7 +21,7 @@
   @include media-breakpoint-up(md) {
     flex: 0 0 5rem
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     display: none;
   }
 }

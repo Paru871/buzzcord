@@ -5,7 +5,7 @@
   @include media-breakpoint-only(md) {
     width: 10rem;
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     width: 7.5rem;
   }
 }

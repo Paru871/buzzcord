@@ -7,7 +7,7 @@
       display: none;
     }
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     display: flex;
     align-items: center;
     gap: .75rem;
@@ -21,7 +21,7 @@
   @include media-breakpoint-up(md) {
     font-size: 1rem;
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     font-size: .875rem;
   }
   p {

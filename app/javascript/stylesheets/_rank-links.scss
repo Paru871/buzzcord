@@ -12,7 +12,7 @@
   @include media-breakpoint-up(md) {
     min-width: 12rem;
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     flex: 1;
   }
   .button-link {

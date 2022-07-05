@@ -5,7 +5,7 @@
   @include media-breakpoint-up(md) {
     padding: 1rem;
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     padding: .5rem;
   }
 }
@@ -15,7 +15,7 @@
   text-align: center;
   border-radius: .25rem;
   overflow: hidden;
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     min-width: 3rem;
   }
 }
@@ -25,7 +25,7 @@
   border-bottom: solid 1px $border;
   background-color: $base-color;
   padding: 0 .5rem;
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     display: none;
   }
 }
