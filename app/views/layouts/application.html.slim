@@ -13,35 +13,38 @@ html
     = favicon_link_tag '/android-chrome-256x256.png', rel: 'icon', sizes: '256x256', type: 'image/png'
     link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" rel="stylesheet" /
   body
-    .app-title.navbar.navbar-expand-md.navbar-light.bg-mythemee
-      .container
-        .navbar-brand
-          = image_tag('buzzcordr.svg', alt: 'buzzcord', class: 'logo-header')
-        .col-md-0.text-end
-          .text-white
-            = current_user.name
-            = image_tag current_user.avatar, class: 'rounded-circle ms-3 avatar-header'
-    .container
-      .position-relative
-        - if flash.notice
-          .flash-message.notice.alert.alert-success
-            = notice
-        - if flash.alert
-          .flash-message.alert.alert.alert-denger
-            = alert
-    = yield
-    footer.text-center.text-lg-start.text-white style='background-color: #3f4678'
-      .container
-        .py-2
-          .row.d-flex.align-items-center
-            .col-md-7.text-md-start
-              small
-                | © 2022 Paru871
-                /! Twitter
-                a.btn.btn-outline-light.btn-floating.ms-3 href="https://twitter.com/Paru871" role="button"
-                  i.bi.bi-twitter
-                /! Github
-                a.btn.btn-outline-light.btn-floating.ms-1 href="https://github.com/Paru871/buzzcord/" role="button"
-                  i.bi.bi-github
-            .col-md-5.text-md-end.mt-2
-              = button_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-outline-warning rounded-pill'
+    .wrapper
+      .wrapper__start
+        .app-title.navbar.navbar-expand-md.navbar-light.bg-mythemee
+          .container
+            .navbar-brand
+              = image_tag('buzzcordr.svg', alt: 'buzzcord', class: 'logo-header')
+            .col-md-0.text-end
+              .text-white
+                = current_user.name
+                = image_tag current_user.avatar, class: 'rounded-circle ms-3 avatar-header'
+        .container
+          .position-relative
+            - if flash.notice
+              .flash-message.notice.alert.alert-success
+                = notice
+            - if flash.alert
+              .flash-message.alert.alert.alert-denger
+                = alert
+        = yield
+      .wrapper__end
+        footer.text-center.text-lg-start.text-white style='background-color: #3f4678'
+          .container
+            .py-2
+              .row.d-flex.align-items-center
+                .col-md-7.text-md-start
+                  small
+                    | © 2022 Paru871
+                    /! Twitter
+                    a.btn.btn-outline-light.btn-floating.ms-3 href="https://twitter.com/Paru871" role="button"
+                      i.bi.bi-twitter
+                    /! Github
+                    a.btn.btn-outline-light.btn-floating.ms-1 href="https://github.com/Paru871/buzzcord/" role="button"
+                      i.bi.bi-github
+                .col-md-5.text-md-end.mt-2
+                  = button_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-outline-warning rounded-pill'
