@@ -1,0 +1,13 @@
+.rank-emojis__items {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.rank-emojis__item {
+  border: solid 1px #ccc;
+  padding: .125rem .5rem;
+  display: flex;
+  gap: .25rem;
+  font-size: .75rem;
+}

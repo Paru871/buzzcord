@@ -1,0 +1,33 @@
+.rank-main__title {
+  font-size: .875rem;
+  margin-bottom: 1.25em;
+  color: $muted-text;
+  @include media-breakpoint-up(md) {
+    .rank__avatar-image {
+      display: none;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    .rank__avatar-image {
+      width: 2rem;
+    }
+  }
+}
+
+.rank-main__text {
+  @include media-breakpoint-up(md) {
+    font-size: 1rem;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: .875rem;
+  }
+  p {
+    line-height: 1.8;
+    img {
+      width: 1em;
+    }
+  }
+}

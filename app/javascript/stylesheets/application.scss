@@ -1,143 +1,29 @@
-$container-max-widths: (
-  sm: 100%,
-  md: 100%,
-  lg: 960px,
-  xl: 960px,
-  xxl: 960px
-);
+@import './variables';
+@import '~bootstrap/scss/bootstrap.scss';
+@import './base';
 
-$accent-color: #f2576c;
-
-$text-gray: #444444;
-
-$text-lightgray: #5d5d5d;
-
-@import "~bootstrap/scss/bootstrap.scss";
-
-img {
-  max-width: 100%;
+.background-main-color {
+  background-color: $main-color !important;
 }
-
-body {
-  background-color: #d5ecf8 !important;
-  color: $text-lightgray;
+.text-main-color {
+  color: $main-color !important;
 }
-
-.bg-mythemea {
-  background-color: #f0faff !important;
-}
-.bg-mythemeb {
-  background-color: #dee7eb !important;
-}
-.bg-mythemec {
-  background-color: #91d0ed !important;
-}
-.bg-mythemed {
-  background-color: #6873d1 !important;
-}
-.bg-mythemee {
-  background-color: #3f4678 !important;
-}
-.btnx-mythemed {
-  background: #6873d1; border: 2px solid #6873d1;
-}
-.btn-mythemed {
-  background-color: #6873d1 !important;
-}
-.text-mythemee {
-  color: #3f4678 !important;
-}
-.border-mythemec {
-  border-color: #91d0ed !important;
-}
-.text-red1 {
+.text-accent-color {
   color: $accent-color !important;
 }
-
 .text-gray {
-  color: $text-gray !important;
+  color: $gray !important;
 }
 
-@mixin button-style($button-color) {
-  $background-color: lighten($button-color, 5%);
-  $border-color: $button-color;
-  background: $background-color;
-  border: 2px solid $border-color;
-  color: $white;
-  &:hover {
-    background: darken($background-color, 5%);
-    border: 2px solid darken($border-color, 5%);
-    color: $white;
-  }
-}
-
-.btnx-new {
-  @include button-style($accent-color);
-  width: 100%;
-  max-width: 320px;
-}
-
-.logo {
-  width: 200px;
-  @include media-breakpoint-down(md) {
-    width: 160px;
-  }
-  @include media-breakpoint-down(sm) {
-    width: 120px;
-  }
-}
-
-.logo-header {
-  width: 40px;
-}
-
-.avatar-header {
-  width: 40px;
-}
-
-.avatar {
-  width: 70px;
-}
-
-.pc {
-  width: 24px;
-}
-
-.crown {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(-50%, 0);
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  padding: 12px;
-  border-radius: 50%;
-  &.is-rank-1{
-    background-color: #bdb71c;
-  }
-  &.is-rank-2{
-    background-color: #c9caca;
-  }
-  &.is-rank-3{
-    background-color: #ac6b25;
-  }
-
-}
-
-// .flash-message {
-//   position: absolute;
-//   width: 100%;
-//   top: 32px;
-//   pointer-events: none;
-// }
-
-.rank-text {
-  p {
-    line-height: 1.8;
-  }
-}
-
-@import "./wrapper";
+@import './button';
+@import './wrapper';
+@import './welcome';
+@import './header';
+@import './ranks';
+@import './rank';
+@import './rank-main';
+@import './rank-emojis';
+@import './rank-score';
+@import './rank-crown';
+@import './rank-body';
+@import './rank-links';

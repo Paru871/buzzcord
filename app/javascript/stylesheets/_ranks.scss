@@ -1,0 +1,13 @@
+.ranks {
+  padding: 3rem 0;
+}
+
+.ranks__title {
+  font-weight: 700;
+  @include media-breakpoint-up(md) {
+    font-size: 1.5rem;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: 1.375rem;
+  }
+}

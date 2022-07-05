@@ -15,14 +15,14 @@ html
   body
     .wrapper
       .wrapper__start
-        .app-title.navbar.navbar-expand-md.navbar-light.bg-mythemee
+        .header.app-title.navbar.navbar-expand-md.navbar-light.background-main-color
           .container
             .navbar-brand
-              = image_tag('buzzcordr.svg', alt: 'buzzcord', class: 'logo-header')
+              = image_tag('buzzcordr.svg', alt: 'buzzcord', class: 'header__logo')
             .col-md-0.text-end
               .text-white
                 = current_user.name
-                = image_tag current_user.avatar, class: 'rounded-circle ms-3 avatar-header'
+                = image_tag current_user.avatar, class: 'rounded-circle ms-3 header__avatar'
         .container
           .position-relative
             - if flash.notice

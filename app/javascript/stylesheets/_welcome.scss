@@ -1,0 +1,11 @@
+.welcome__logo {
+  @include media-breakpoint-up(lg) {
+    width: 12rem;
+  }
+  @include media-breakpoint-only(md) {
+    width: 10rem;
+  }
+  @include media-breakpoint-down(sm) {
+    width: 7.5rem;
+  }
+}

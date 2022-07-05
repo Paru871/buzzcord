@@ -1,0 +1,29 @@
+.rank-crown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  padding: 12px;
+  border-radius: 50%;
+  background-color: desaturate(darken($base-color, 18%), 20%);
+  @include media-breakpoint-up(md) {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+  @include media-breakpoint-down(sm) {
+    width: 3rem;
+    height: 3rem;
+  }
+  &.is-rank-1{
+    background-color: $gold;
+  }
+  &.is-rank-2{
+    background-color: $silver;
+  }
+  &.is-rank-3{
+    background-color: $bronz;
+  }
+}

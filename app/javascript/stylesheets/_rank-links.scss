@@ -1,0 +1,27 @@
+.rank-links {
+  margin-top: 1.5rem;
+}
+
+.rank-links__items {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.rank-links__item {
+  @include media-breakpoint-up(md) {
+    min-width: 12rem;
+  }
+  @include media-breakpoint-down(sm) {
+    flex: 1;
+  }
+  .button-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+  }
+  span {
+    font-size: .75rem;
+  }
+}

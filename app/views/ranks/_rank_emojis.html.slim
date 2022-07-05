@@ -1,0 +1,16 @@
+.rank-emojis
+  .rank-emojis__items
+    - if emojis.present?
+      - emojis.each do |emoji|
+        - if emoji.emoji_id.present?
+          .rank-emojis__item.rounded
+            span
+              = image_tag("https://cdn.discordapp.com/emojis/#{emoji.emoji_id}.webp?size=16&quality=lossless", alt: emoji.emoji_name)
+            span
+              = emoji.count
+        - else
+          .rank-emojis__item.rounded
+            span
+              = emoji.emoji_name
+            span
+              = emoji.count
