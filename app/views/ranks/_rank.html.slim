@@ -8,9 +8,13 @@
   .rank-body.bg-white.rounded
     .rank-crown(class="is-rank-#{rank.order}")
       - if rank.order > 3
-        | #{rank.order}位
+        .rank-crown__order
+          span.rank-crown__number
+            | #{rank.order}
+          span.rank-crown__unit
+            | 位
       - else
-        = image_tag('/crown.png')
+        = image_tag('/crown.png', class: 'crown-size')
     .rank-score
       .rank-score__inner
         .rank-score__label
