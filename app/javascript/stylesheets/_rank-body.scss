@@ -1,0 +1,33 @@
+.rank-body {
+  position: relative;
+  padding: 3rem 1.5rem 1.5rem;
+  @include media-breakpoint-up(md) {
+    padding-top: 3rem;
+  }
+  @include media-breakpoint-down(md) {
+    padding-top: 2rem;
+  }
+
+}
+
+.rank-body__inner {
+  @include media-breakpoint-up(md) {
+    display: flex;
+    gap: 2rem;
+  }
+}
+
+.rank-body__start {
+  @include media-breakpoint-up(md) {
+    flex: 0 0 5rem
+  }
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+.rank-body__end {
+  @include media-breakpoint-up(md) {
+    flex: 1
+  }
+}

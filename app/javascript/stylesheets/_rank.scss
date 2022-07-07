@@ -1,0 +1,19 @@
+.rank {
+  margin: 0 auto;
+  width: 42.5rem;
+  max-width: 100%;
+  &:not(:first-child) {
+    margin-top: 3rem;
+  }
+}
+
+.rank__channel {
+  font-size: .875rem;
+  margin-bottom: .25rem;
+  color: $muted-text;
+}
+
+.rank__avatar-image {
+  width: 100%;
+  border-radius: 50%;
+}

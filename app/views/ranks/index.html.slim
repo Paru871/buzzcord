@@ -1,51 +1,14 @@
 .ranks
   .container
     - if @ranks.empty?
-      h1.text-center.text-mythemee.my-5.fs-2
+      h1.ranks__title.text-center.text-main-color.mb-5
         | #{l(Time.zone.yesterday)}のランキング
-      h2.text-center.text-mythemee.my-5.fs-4
+      p.text-center.text-main-color.mb-5.fs-4
         | 昨日は絵文字スタンプのリアクションがありませんでした。
     - else
-      h1.text-center.text-mythemee.my-5.fs-2
+      h1.ranks__title.text-center.text-main-color.mb-5
         | #{l(@ranks.first.created_at.ago(1.day), format: :title)}
         | のランキング
-      .card-deck.rounded
+      .ranks__items
         - @ranks.each do |rank|
-          h5
-          | #{rank.total_emojis_count} /
-          |  #{rank.channel_name}チャンネル
-          - if rank.thread_name.present?
-            | 、#{rank.thread_name}スレッド
-          .card.content-card.mb-3
-            .card-body.text-start.bg-white
-              .rank.ms-5
-                .crown(class="is-rank-#{rank.order}")
-                  = image_tag('/crown.png')
-              .container
-                .row.p-2
-                  .col-sm-3
-                    img src="#{rank.author_avatar}" class="avatar pt-3"
-                    .card-title.text-break.fs-6
-                      = rank.author_name
-                    | #{l rank.posted_at, format: :short}投稿
-                    br
-                    a.btn href="discord://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.thread_id || rank.channel_id}/#{rank.message_id}" alt='Discordアプリで開く' role="button"
-                      i.bi.bi-discord
-                    a.btn href="https://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.thread_id || rank.channel_id}/#{rank.message_id}" alt='ブラウザで開く' role="button"
-                      img src="/3904.png" class="pc"
-                  .col-sm-9
-                    .rank-order.text-end
-                      | #{rank.order}位
-                    .rank-text.card-text.text-break.fs-6.pt-3
-                      = simple_format(rank.content)
-                      br
-                      - unless rank.attachments == nil?
-                        - rank.attachments.each do |attachment|
-                          img.img-fluid.w-25.align-top src="https://cdn.discordapp.com/attachments/#{rank.thread_id || rank.channel_id}/#{attachment.attachment_id}/#{attachment.attachment_filename}" class="mb-3"
-                      br
-                      - rank.emojis.each do |emoji|
-                        - if emoji.emoji_id.present?
-                          img.emoji alt="#{emoji.emoji_name}" data-id="#{emoji.emoji_id}" data-type="emoji" draggable="false" src="https://cdn.discordapp.com/emojis/#{emoji.emoji_id}.webp?size=16&quality=lossless" /
-                        - else
-                          = emoji.emoji_name
-                        = emoji.count
+          = render 'rank', rank: rank
