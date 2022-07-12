@@ -1,6 +1,6 @@
 # Buzzcord(バズコード)
 
-<img src="https://user-images.githubusercontent.com/82434093/173498596-464c8f4c-3e7c-40aa-95b1-1ad55d821cfb.svg" width="50%">
+<img src="https://user-images.githubusercontent.com/82434093/178455431-23131f5c-1380-4d12-a115-bd6d4c2800bb.png">
 
 ### 昨日 Discord サーバー内でバズった発言、「Buzzcord ランキング」をチェックしよう！
 
@@ -83,10 +83,10 @@ $ bin/webpack-dev-server
 
 - `bin/rails ranks:create`を実行することによって、前日分のデータを集計し、ランキング情報を作成します。
 
-  - 🚨Heroku で動かす際は Heroku Scheduler にこのコマンドを登録してください。
+  - 🚨Heroku で動かす際は Heroku Scheduler にこのコマンドを登録してください。(設定時間は日付が変わってから、discord メンバーの活動が少ない時間がおすすめです。)
 
 - `bin/rails ranks:post_buzzcord `を実行することによって、Discord 内の指定したチャンネルに Buzzcord ランキング第 1 位のお知らせを投稿します。
-  - 🚨Heroku で動かす際は Heroku Scheduler にこのコマンドを登録してください。
+  - 🚨Heroku で動かす際は Heroku Scheduler にこのコマンドを登録してください。(設定時間は朝のうちの、discord メンバーの活動が始まる時間がおすすめです。)
 
 ## テスト
 
@@ -102,10 +102,10 @@ $ bundle exec rspec
 
 - 毎日定時に、前日のランキング第 1 位を Discord でお知らせします。
 
-<img src="https://user-images.githubusercontent.com/82434093/173498917-f14cb58b-0240-409c-ad9a-c4b5c1e3ebdc.png" width="50%">
+<img src="https://user-images.githubusercontent.com/82434093/178436878-1c56ba73-c6ec-4fcc-9751-5e7d5399e3ef.png" width="50%">
 
 - Web サイトにログインすると前日のランキング第 1 位〜5 位がチェックできます。
 
 左:ログイン前、右:ログイン後
 
-![スクリーンショット 2022-06-14 16 58 11](https://user-images.githubusercontent.com/82434093/173525062-18704182-32d6-471a-b101-8aa9a7ae9d0c.png)
+<img alt="buzzcord_view" src="https://user-images.githubusercontent.com/82434093/178435921-e0343125-37c7-492c-9d3f-ce9fe5fe2a1b.png">
