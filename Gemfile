@@ -67,6 +67,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'discordrb', github: 'shardlab/discordrb', branch: 'threads'
 gem 'dotenv-rails'
+gem 'meta-tags'
 gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'net-smtp'
