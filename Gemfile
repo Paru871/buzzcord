@@ -77,3 +77,4 @@ gem 'parser', '~> 3.1', '>= 3.1.2.0'
 gem 'rails-i18n'
 gem 'slim-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'meta-tags'
