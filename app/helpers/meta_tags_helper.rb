@@ -23,7 +23,7 @@ module MetaTagsHelper
         card: 'summary_large_image',
         site: '@Paru871',
         description: :description,
-        domain: 'https://buzzcord.herokuapp.com/'
+        domain: 'https://buzzcord.herokuapp.com/welcome'
       }
     }
   end
