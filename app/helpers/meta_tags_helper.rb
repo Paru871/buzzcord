@@ -5,6 +5,7 @@ module MetaTagsHelper
   def default_meta_tags
     {
       site: 'Buzzcord',
+      title: 'Buzzcord',
       reverse: true,
       charset: 'utf-8',
       description: 'Discordで昨日バズった発言を知るアプリ',
@@ -20,10 +21,12 @@ module MetaTagsHelper
         locale: 'ja_JP'
       },
       twitter: {
+        title: 'Buzzcord',
         card: 'summary_large_image',
         site: '@Paru871',
         description: :description,
-        domain: 'https://buzzcord.herokuapp.com/welcome'
+        image: image_url('ogp.png'),
+        domain: 'https://buzzcord.herokuapp.com/'
       }
     }
   end
