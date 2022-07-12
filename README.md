@@ -1,6 +1,6 @@
 # Buzzcord(バズコード)
 
-<img src="https://user-images.githubusercontent.com/82434093/178427997-6af1efe6-a309-49bb-ba97-e034421b8c29.png" width="50%">
+<img src="https://user-images.githubusercontent.com/82434093/178455431-23131f5c-1380-4d12-a115-bd6d4c2800bb.png">
 
 ### 昨日 Discord サーバー内でバズった発言、「Buzzcord ランキング」をチェックしよう！
 
