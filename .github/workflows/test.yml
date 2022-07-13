@@ -57,18 +57,8 @@ jobs:
       - name: yarn install
         run: yarn install --check-files
 
-      # デザインレビュー終わったら下記1行に戻す
-      # - name: Setup test DB
-      #   run: bundle exec rails db:setup
-
-      - name: Drop test DB
-        run: bundle exec rails db:drop
-
-      - name: Create test DB
-        run: bundle exec rails db:create
-
-      - name: Load test DB
-        run: bundle exec rails db:schema:load
+      - name: Setup test DB
+        run: bundle exec rails db:setup
 
       - name: Run tests
         run: bundle exec rspec
