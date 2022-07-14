@@ -62,25 +62,25 @@ RSpec.describe BotMessageFormatter, type: :model do
 
   # rubocop:disable Metrics/MethodLength
   def message_header_thread
-    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「趣味の広場チャンネル、音楽スレッド」での<@45678>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/23456/34567"
+    "おはようございます😃\n昨日バズった発言の第1位は…\n「趣味の広場チャンネル、音楽スレッド」での<@45678>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/23456/34567"
   end
 
   def message_header_channel
-    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「趣味の広場チャンネル」での<@45678>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/12345/34567"
+    "おはようございます😃\n昨日バズった発言の第1位は…\n「趣味の広場チャンネル」での<@45678>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/12345/34567"
   end
 
   def reaction_zero_header
-    "おはようございます😃Buzzcordお知らせbotです。\n昨日このDiscordサーバー内では、絵文字スタンプの反応がありませんでした。\n素敵な1日をお過ごしください👍"
+    "おはようございます😃\n昨日はスタンプのリアクションはありませんでした。\n素敵な1日をお過ごしください。"
   end
 
   def message_embed_hash
     {
-      description: 'テスト投稿です！',
+      description: '**テスト投稿です！**',
       color: 0x2727ff,
       timestamp: Date.current.in_time_zone,
       footer: {
         icon_url: 'https://cdn.discordapp.com/embed/avatars/0.png',
-        text: 'posted:'
+        text: 'posted'
       },
       thumbnail: {
         url: 'https://cdn.discordapp.com/embed/avatars/3.png'
@@ -94,8 +94,8 @@ RSpec.describe BotMessageFormatter, type: :model do
       },
       fields: [
         {
-          name: ':tada: 獲得絵文字スタンプ数: 20 :tada:',
-          value: "昨日のBuzzcord2位〜5位はサイトにてお知らせしていますのでぜひチェックしてね👍\n昨日のランキングは[こちら](#{ENV['URL_HOST']})にアクセス！"
+          name: ':tada: 獲得スタンプ: 20 :tada:',
+          value: "2位〜5位は[Buzzcord](#{ENV['URL_HOST']})で確認できます。\nぜひ、チェックしてください👍"
         }
       ]
     }

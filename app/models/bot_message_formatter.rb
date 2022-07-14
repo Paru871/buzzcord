@@ -24,7 +24,7 @@ class BotMessageFormatter
       nil
     else
       {
-        description: @rank.content_post,
+        description: set_content_post,
         color: 0x2727ff,
         timestamp: @rank.posted_at,
         footer: {
@@ -49,21 +49,25 @@ class BotMessageFormatter
         ]
       }
     end
-    # rubocop:enable Metrics/MethodLength
   end
+  # rubocop:enable Metrics/MethodLength
 
   private
 
   def make_header_reaction_zero
-    "おはようございます😃Buzzcordお知らせbotです。\n昨日このDiscordサーバー内では、絵文字スタンプの反応がありませんでした。\n素敵な1日をお過ごしください👍"
+    "おはようございます😃\n昨日はスタンプのリアクションはありませんでした。\n素敵な1日をお過ごしください。"
   end
 
   def make_header_thread
-    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「#{@rank.channel_name}チャンネル、#{@rank.thread_name}スレッド」での<@#{@rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.thread_id}/#{@rank.message_id}"
+    "おはようございます😃\n昨日バズった発言の第1位は…\n「#{@rank.channel_name}チャンネル、#{@rank.thread_name}スレッド」での<@#{@rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.thread_id}/#{@rank.message_id}"
   end
 
   def make_header_channel
-    "おはようございます😃\n昨日のこのDiscordサーバー内でのBuzzcordランキング第1位は…\n「#{@rank.channel_name}チャンネル」での<@#{@rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.channel_id}/#{@rank.message_id}"
+    "おはようございます😃\n昨日バズった発言の第1位は…\n「#{@rank.channel_name}チャンネル」での<@#{@rank.author_id}>さんのこちらの発言でした:tada:\nhttps://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{@rank.channel_id}/#{@rank.message_id}"
+  end
+
+  def set_content_post
+    "**#{@rank.content_post}**"
   end
 
   def set_icon_url
@@ -71,7 +75,7 @@ class BotMessageFormatter
   end
 
   def set_icon_text
-    'posted:'
+    'posted'
   end
 
   def set_image
@@ -83,10 +87,10 @@ class BotMessageFormatter
   end
 
   def set_fields_name
-    ":tada: 獲得絵文字スタンプ数: #{@rank.total_emojis_count} :tada:"
+    ":tada: 獲得スタンプ: #{@rank.total_emojis_count} :tada:"
   end
 
   def set_fields_value
-    "昨日のBuzzcord2位〜5位はサイトにてお知らせしていますのでぜひチェックしてね👍\n昨日のランキングは[こちら](#{ENV['URL_HOST']})にアクセス！"
+    "2位〜5位は[Buzzcord](#{ENV['URL_HOST']})で確認できます。\nぜひ、チェックしてください👍"
   end
 end
