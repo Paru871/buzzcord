@@ -43,16 +43,16 @@ https://discordapp.com/developers/applications/
 
 #### Bot の設定
 
-- Developer Portal から Bot を作成して Token を環境変数に設定する
-- SERVER MEMBERS INTENT を ON にする
-- OAuth2 の Scope から Bot をチェック、Permissions の SendMessages をチェックする
+- Developer Portal から 新しい Application を作成し、Bot を作成して Token を環境変数に設定する
+- 「Privileged Gateway Intents」内の項目 3 つ(PRESENSE INTENT,SERVER MEMBERS INTENT,MESSAGE CONTENT INTENT) を ON にして保存する
+- OAuth2 の 「URL Generator」のページ内の SCOPES 欄 の「Bot」 をチェック、BOT PERMISSIONS 欄 の 「Send Messages」 をチェックする
 - 発行された URL から Bot をサーバーに招待する
 
 #### OAuth2 の設定
 
-- Developer Portal の OAuth2 の Redirects にリダイレクト URL を設定する
+- Developer Portal の OAuth2 の 「Add Redirect」をクリックしてリダイレクト URL を設定して、保存する。
+  https://アドレス/auth/discord/callback
 - OAuth2 の Client ID と Client Secret を環境変数に設定する
-- 利用 Scope は identify のみにチェックする
 
 ### 環境変数の設定
 
