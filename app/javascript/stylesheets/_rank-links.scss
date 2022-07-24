@@ -8,12 +8,31 @@
   gap: 1rem;
 }
 
-.rank-links__item {
+.rank-links__item_discord {
   @include media-breakpoint-up(md) {
     min-width: 12rem;
   }
   @include media-breakpoint-down(md) {
-    flex: 1;
+    display: none;
+  }
+  .button-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+  }
+  span {
+    font-size: .75rem;
+  }
+}
+
+.rank-links__item_laptop {
+  @include media-breakpoint-up(md) {
+    min-width: 12rem;
+  }
+  @include media-breakpoint-down(md) {
+    width: 12rem;
+    margin: 0 auto;
   }
   .button-link {
     display: flex;

@@ -43,13 +43,9 @@
           = render 'rank_emojis', emojis: rank.emojis
     .rank-links
       .rank-links__items
-        .rank-links__item
+        .rank-links__item_discord
           = link_to "discord://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.thread_id || rank.channel_id}/#{rank.message_id}", class: 'btn button-link'
             i.bi.bi-discord
-            span
-              | アプリで開く
-        .rank-links__item
+        .rank-links__item_laptop
           = link_to "https://discord.com/channels/#{ENV['DISCORD_SERVER_ID']}/#{rank.thread_id || rank.channel_id}/#{rank.message_id}", class: 'btn button-link'
             i.bi.bi-laptop
-            span
-              | ブラウザで開く
