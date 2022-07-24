@@ -2,8 +2,8 @@
 
 class CustomEmojiConverter
   def self.call(content)
-    regexp = /(<:[0-9a-zA-Z]+:[0-9]+>)/
-    regexp2 = /<(:[0-9a-zA-Z]+:)([0-9]+)>/
+    regexp = /(<:[0-9a-zA-Z_]+:[0-9]+>)/
+    regexp2 = /<(:[0-9a-zA-Z_]+:)([0-9]+)>/
     contents_all = +''
     content.split(regexp).map do |word|
       matched = word.match(regexp2)
