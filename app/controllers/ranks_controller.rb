@@ -2,6 +2,6 @@
 
 class RanksController < ApplicationController
   def index
-    @ranks = Rank.includes(%i[emojis attachments])
+    @ranks = Rank.includes(%i[emojis attachments]).order('ranks.order asc')
   end
 end
