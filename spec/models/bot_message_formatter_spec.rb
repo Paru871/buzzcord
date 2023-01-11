@@ -58,6 +58,28 @@ RSpec.describe BotMessageFormatter, type: :model do
         expect(formatter.embed_message).to eq nil
       end
     end
+
+    context 'ランキング1位に添付画像があるとき' do
+      before do
+        @rank = create(:rank)
+        @attachment = create(:attachment, rank_id: @rank.id)
+      end
+      it 'ランキング1位情報に添付画像情報が付加される' do
+        formatter = BotMessageFormatter.new
+        expect(formatter.embed_message).to eq message_embed_hash
+        pp formatter.embed_message
+      end
+    end
+
+    context 'ランキング1位に添付画像がないとき' do
+      before do
+        @rank = create(:rank)
+      end
+      it 'ランキング1位情報に添付画像情報が付加されない' do
+        formatter = BotMessageFormatter.new
+        expect(formatter.embed_message).to eq message_embed_hash_no_attachment
+      end
+    end
   end
 
   # rubocop:disable Metrics/MethodLength
@@ -87,6 +109,34 @@ RSpec.describe BotMessageFormatter, type: :model do
       },
       image: {
         url: 'https://cdn.discordapp.com/attachments/23456/123456/55555.png'
+      },
+      author: {
+        name: 'Hana',
+        icon_url: 'https://cdn.discordapp.com/embed/avatars/3.png'
+      },
+      fields: [
+        {
+          name: ':tada: 獲得スタンプ: 20 :tada:',
+          value: "2位〜5位は[Buzzcord](#{ENV['URL_HOST']})で確認できます。\nぜひ、チェックしてください👍"
+        }
+      ]
+    }
+  end
+
+  def message_embed_hash_no_attachment
+    {
+      description: '**テスト投稿です！**',
+      color: 0x2727ff,
+      timestamp: Date.current.in_time_zone,
+      footer: {
+        icon_url: 'https://cdn.discordapp.com/embed/avatars/0.png',
+        text: 'posted'
+      },
+      thumbnail: {
+        url: 'https://cdn.discordapp.com/embed/avatars/3.png'
+      },
+      image: {
+        url: nil
       },
       author: {
         name: 'Hana',
