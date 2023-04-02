@@ -15,5 +15,16 @@ RSpec.describe RanksCreator, type: :model do
           .and change { Attachment.count }.from(1).to(0)
       end
     end
+    context '#一昨日以前のリアクションデータの削除' do
+      before do
+        create_list(:reaction, 5)
+        create_list(:reaction, 4, :reacted_before_yesterday)
+        create_list(:reaction, 3, :reacted_today)
+      end
+      it '昨日と今日のデータのみが残る' do
+        expect { Reaction.where('reacted_at < ?', Time.zone.yesterday).delete_all }
+          .to change { Reaction.count }.from(12).to(8)
+      end
+    end
   end
 end

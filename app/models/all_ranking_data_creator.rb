@@ -11,5 +11,8 @@ class AllRankingDataCreator
       EmojisCreator.call(message, rank_record)
       AttachmentsCreator.call(message, rank_record)
     end
+
+    # 一昨日以前のリアクションデータの削除
+    Reaction.where('reacted_at < ?', Time.zone.yesterday).delete_all
   end
 end

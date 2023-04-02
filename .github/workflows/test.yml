@@ -56,6 +56,7 @@ jobs:
 
       - name: yarn install
         run: yarn install --check-files
+        run: bundle exec bin/webpack
 
       - name: Setup test DB
         run: bundle exec rails db:setup
