@@ -56,7 +56,9 @@ jobs:
 
       - name: yarn install
         run: yarn install --check-files
-        run: bundle exec bin/webpack
+
+      - name: webpack install
+        run: NODE_OPTIONS=--openssl-legacy-provider bin/webpack
 
       - name: Setup test DB
         run: bundle exec rails db:setup
