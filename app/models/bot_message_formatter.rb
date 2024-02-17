@@ -81,7 +81,7 @@ class BotMessageFormatter
   def set_image
     return if @attachment.blank?
 
-    "https://cdn.discordapp.com/attachments/#{@rank.thread_id || @rank.channel_id}/#{@attachment.attachment_id}/#{@attachment.attachment_filename}"
+    "#{@attachment.attachment_filename}"
   end
 
   def set_fields_name

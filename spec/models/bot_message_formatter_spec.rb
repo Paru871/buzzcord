@@ -67,7 +67,6 @@ RSpec.describe BotMessageFormatter, type: :model do
       it 'ランキング1位情報に添付画像情報が付加される' do
         formatter = BotMessageFormatter.new
         expect(formatter.embed_message).to eq message_embed_hash
-        pp formatter.embed_message
       end
     end
 
