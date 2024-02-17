@@ -81,7 +81,7 @@ class BotMessageFormatter
   def set_image
     return if @attachment.blank?
 
-    "#{@attachment.attachment_filename}"
+    @attachment.attachment_filename.to_s
   end
 
   def set_fields_name
