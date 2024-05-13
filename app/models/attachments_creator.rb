@@ -8,7 +8,7 @@ class AttachmentsCreator
     message_info['attachments'].each do |hash_attachment|
       rank_record.attachments.create do |attachment|
         attachment.attachment_id = hash_attachment['id']
-        attachment.attachment_filename = hash_attachment['filename']
+        attachment.attachment_filename = hash_attachment['url']
       end
     end
   end

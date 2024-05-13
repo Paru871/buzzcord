@@ -58,7 +58,7 @@ RSpec.describe 'Ranks', type: :system do
 
       it '画像の添付を含むレコードがあってもレコード順を保持している' do
         create(:attachment, rank_id: @rank[4].id)
-        create(:attachment, rank_id: @rank[4].id, attachment_id: 234_567, attachment_filename: '6666.png')
+        create(:attachment, rank_id: @rank[4].id, attachment_id: 234_567, attachment_filename: 'https://cdn.discordapp.com/attachments/23456/234567/6666.png')
 
         sign_in_as(user)
         page.save_screenshot

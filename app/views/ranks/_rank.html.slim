@@ -39,7 +39,7 @@
                 .rank-attachments__items
                   - rank.attachments.each do |attachment|
                     .rank-attachments__item
-                      img.img-fluid.w-25.align-top src="https://cdn.discordapp.com/attachments/#{rank.thread_id || rank.channel_id}/#{attachment.attachment_id}/#{attachment.attachment_filename}" class="mb-3"
+                      img.img-fluid.w-25.align-top src="#{attachment.attachment_filename}" class="mb-3"
           = render 'rank_emojis', emojis: rank.emojis
     .rank-links
       .rank-links__items
