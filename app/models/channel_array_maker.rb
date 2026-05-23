@@ -16,6 +16,7 @@ class ChannelArrayMaker
     JSON.parse(DiscordApiClient.new.fetch_channel_info(channel_id))
   rescue JSON::ParserError
     raise if attempt >= 3
+
     sleep(2**attempt)
     fetch_channel(channel_id, attempt: attempt + 1)
   end
