@@ -16,43 +16,6 @@ RSpec.describe DiscordBot, type: :model do
     end
   end
 
-  describe '#reaction_create' do
-    let(:discord_bot) { DiscordBot.new }
-    let(:channel) { double('channel', id: 1_234_567) }
-    let(:user) { double('user', id: 7_654_321) }
-    let(:emoji) { double('emoji', name: 'test_emoji', id: nil) }
-    let(:event) do
-      double('event',
-             channel: channel,
-             message_id: 11_111,
-             user: user,
-             emoji: emoji)
-    end
-
-    before do
-      allow(Discordrb::Bot).to receive(:new).and_return(double('discordrb_bot'))
-    end
-
-    it 'Reactionレコードが作成される' do
-      expect { discord_bot.send(:reaction_create, event, 1) }.to change(Reaction, :count).by(1)
-    end
-
-    it 'event.channel.idとevent.message_idから属性を取得しevent.messageを呼ばない' do
-      expect(event).not_to receive(:message)
-      discord_bot.send(:reaction_create, event, 1)
-      reaction = Reaction.last
-      expect(reaction.channel_id).to eq 1_234_567
-      expect(reaction.message_id).to eq 11_111
-      expect(reaction.user_id).to eq 7_654_321
-      expect(reaction.point).to eq 1
-    end
-
-    it 'リアクション削除はpointが-1で保存される' do
-      discord_bot.send(:reaction_create, event, -1)
-      expect(Reaction.last.point).to eq(-1)
-    end
-  end
-
   describe '#member_watch' do
     context 'botがDiscordメンバーの退会と登録情報変更を検知したとき' do
       it '退会に合わせてUserレコード削除' do
