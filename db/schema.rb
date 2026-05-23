@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_14_223525) do
-
+ActiveRecord::Schema[7.2].define(version: 2024_05_14_223525) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,8 +18,8 @@ ActiveRecord::Schema.define(version: 2024_05_14_223525) do
     t.bigint "rank_id", null: false
     t.bigint "attachment_id"
     t.text "attachment_filename"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["rank_id"], name: "index_attachments_on_rank_id"
   end
 
@@ -29,8 +28,8 @@ ActiveRecord::Schema.define(version: 2024_05_14_223525) do
     t.string "emoji_name", null: false
     t.bigint "emoji_id"
     t.integer "count", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["rank_id"], name: "index_emojis_on_rank_id"
   end
 
@@ -46,9 +45,9 @@ ActiveRecord::Schema.define(version: 2024_05_14_223525) do
     t.string "author_name", null: false
     t.string "author_avatar"
     t.string "author_discriminator", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "posted_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "posted_at", precision: nil, null: false
     t.integer "total_emojis_count", null: false
     t.string "content_post"
     t.index ["order"], name: "index_ranks_on_order"
@@ -60,9 +59,9 @@ ActiveRecord::Schema.define(version: 2024_05_14_223525) do
     t.bigint "user_id", null: false
     t.string "emoji_name", null: false
     t.bigint "emoji_id"
-    t.datetime "reacted_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reacted_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "point"
     t.index ["reacted_at"], name: "index_reactions_on_reacted_at"
   end
@@ -73,8 +72,8 @@ ActiveRecord::Schema.define(version: 2024_05_14_223525) do
     t.string "name", null: false
     t.string "avatar"
     t.string "discriminator", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   end
 
