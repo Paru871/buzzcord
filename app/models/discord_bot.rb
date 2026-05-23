@@ -58,8 +58,8 @@ class DiscordBot
 
   def reaction_create(event, point)
     Reaction.create! do |reaction|
-      reaction.channel_id = event.message.channel.id
-      reaction.message_id = event.message.id
+      reaction.channel_id = event.channel.id
+      reaction.message_id = event.message_id
       reaction.user_id = event.user.id
       reaction.emoji_name = event.emoji.name
       reaction.emoji_id = event.emoji.id
