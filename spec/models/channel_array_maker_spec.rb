@@ -30,5 +30,31 @@ RSpec.describe ChannelArrayMaker, type: :model do
         expect(channel_array).to eq [nil, nil, 1_234_567, 'テストチャンネル']
       end
     end
+
+    context 'Rate Limitが発生したとき' do
+      before do
+        @message = [[1_234_567, 11_111], 20]
+        allow(ChannelArrayMaker).to receive(:sleep)
+      end
+
+      it 'JSON::ParserErrorが一度発生してもリトライして成功する' do
+        call_count = 0
+        allow_any_instance_of(DiscordApiClient).to receive(:fetch_channel_info) do
+          call_count += 1
+          raise JSON::ParserError if call_count == 1
+
+          { 'name': 'テストチャンネル' }.to_json
+        end
+
+        channel_array = ChannelArrayMaker.call(@message)
+        expect(channel_array).to eq [nil, nil, 1_234_567, 'テストチャンネル']
+      end
+
+      it '3回リトライしても失敗し続ける場合はJSON::ParserErrorを発生させる' do
+        allow_any_instance_of(DiscordApiClient).to receive(:fetch_channel_info).and_raise(JSON::ParserError)
+
+        expect { ChannelArrayMaker.call(@message) }.to raise_error(JSON::ParserError)
+      end
+    end
   end
 end
